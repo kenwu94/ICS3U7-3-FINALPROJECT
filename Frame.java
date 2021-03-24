@@ -2,17 +2,23 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Frame extends JFrame{
-    private Panel mp;
+    public static GamePanel mp;
     public static CardLayout lay;
     public static Container cont;
     //creates the frame
     public Frame(String title) {
         super(title);
-//        mp= new Panel();
         cont = this.getContentPane();
         lay = new CardLayout();
         cont.setLayout(lay);
-//        cont.add(mp, BorderLayout.CENTER);
+        
+        Menu m = new Menu();
+        InstructionPanel instr = new InstructionPanel();
+        mp = new GamePanel();
+
+        Frame.cont.add(m, "Menu Panel");
+        Frame.cont.add(mp, "Game Panel");
+        Frame.cont.add(instr, "Instructions");
 
         this.setVisible(true);
         this.setSize(960,540);

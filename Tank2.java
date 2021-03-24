@@ -3,7 +3,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
 //class for the tanks
-public class Tank {
+public class Tank2 {
     //different tanks will have different hp values
     private int hp;
     private int power;
@@ -11,23 +11,23 @@ public class Tank {
     private int y;
 
     //constructor
-    public Tank(int hp, int power){
+    public Tank2(int hp, int power){
         this.hp = hp;
         this.power = power;
-        this.x = 100;
+        this.x = 500;
         this.y = 300;
 
     }
 
     //draws the tank
     public void myDraw(Graphics g){
-    	g.drawImage(Sprites.tank2[1], x, y, null);
-        g.drawImage(Sprites.tank2[0], x, y, null);
+    	g.drawImage(Sprites.tank1[1], x, y, null);
+        g.drawImage(Sprites.tank1[0], x, y, null);
     }
 
     //method for the tank to move on flat ground
     public void moveFlat(){
-    	x+=3;
+    	x-=3;
     }
 
     //method for the tank to move on non-flat ground

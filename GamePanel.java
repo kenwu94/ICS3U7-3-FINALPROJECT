@@ -9,18 +9,17 @@ import java.awt.image.BufferedImage;
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
     private JButton back;
     private Timer timer;
-    private Tank player1, player2;
+    private Tank player1;
+    private Tank2 player2;
+    public static boolean player1turn;
+    Sprites sprites = new Sprites();
 
     public GamePanel(){
         setBackground(Color.white);
-
-        addKeyListener((KeyListener) this);
-        setFocusable(true);
-        this.requestFocusInWindow();
-
+        this.addKeyListener(this);
+        
         timer = new Timer(5, this);
         timer.start();
-
         back = new JButton();
         back.setBounds(0, 471, 80, 30);
         back.setText("BACK");
@@ -32,7 +31,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         this.add(back);
 
         player1 = new Tank(100, 10);
-        player2 = new Tank(50, 20);
+        player2 = new Tank2(100,10);
+        player1turn = true;
 
     }
 
@@ -56,7 +56,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     }
 
     public void keyPressed(KeyEvent e) {
-
+    	if(player1turn) {
+    		if(e.getKeyCode()== e.VK_D) {
+        		player1.moveFlat();
+        	}
+    	}else {
+    		if(e.getKeyCode()== e.VK_J) {
+        		player2.moveFlat();
+        	}
+    	}
+    	repaint();
     }
 
     public void keyReleased(KeyEvent e) {
