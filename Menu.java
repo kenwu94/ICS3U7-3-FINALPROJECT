@@ -49,10 +49,13 @@ public class Menu extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == exit) {
-                    System.exit(0);
+        	System.exit(0);
         }
         else if(e.getSource() == play) {
             Frame.lay.show(Frame.cont, "Game Panel");
+            Frame.mp.requestFocusInWindow();
+        	Frame.mp.setFocusable(true);
+
         }
         else if (e.getSource() == instructions) {
             Frame.lay.show(Frame.cont, "Instructions");
