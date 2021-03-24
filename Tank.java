@@ -9,6 +9,7 @@ public class Tank {
     private int power;
     private int x;
     private int y;
+    private static int fuel;
 
     //constructor
     public Tank(int hp, int power){
@@ -16,6 +17,7 @@ public class Tank {
         this.power = power;
         this.x = 100;
         this.y = 300;
+        fuel = 10;
 
     }
 
@@ -26,12 +28,27 @@ public class Tank {
     }
 
     //method for the tank to move on flat ground
-    public void moveFlat(){
+    public void moveFlatRight(){
     	x+=3;
+    	fuel-=1;
+    	if(fuel == 0) {
+    		GamePanel.player1turn = false;
+    		fuel=10;
+    	}
     }
+    public void moveFlatLeft(){
+    	x-=3;
+    	fuel-=1;
+    	if(fuel == 0) {
+    		GamePanel.player1turn = false;
+    		fuel=10;
+    	}
+    }
+    
 
     //method for the tank to move on non-flat ground
     public void moveTerrain(){}
+    
 
     //method for the tank to shoot
     public void shoot(int power, int angle, Projectile x){}
