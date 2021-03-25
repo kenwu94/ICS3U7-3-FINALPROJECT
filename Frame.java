@@ -15,11 +15,13 @@ public class Frame extends JFrame{
 
         Menu m = new Menu();
         InstructionPanel instr = new InstructionPanel();
+        ControlPanel contr = new ControlPanel();
         mp = new GamePanel();
 
         Frame.cont.add(m, "Menu Panel");
         Frame.cont.add(mp, "Game Panel");
         Frame.cont.add(instr, "Instructions");
+        Frame.cont.add(contr, "Control Panel");
 
         this.setVisible(true);
         this.setSize(960,540);

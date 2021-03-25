@@ -9,14 +9,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class InstructionPanel extends JPanel implements ActionListener, KeyListener {
+public class ControlPanel extends JPanel implements ActionListener, KeyListener {
     private Timer timer;
-    private JButton back, next;
-    private BufferedImage instructions;
+    private JButton back, prev;
+    private BufferedImage controls;
 
-    public InstructionPanel(){
+    public ControlPanel(){
 
-        instructions = getImage("images/instructions.png");
+        controls = getImage("images/controls.png");
         setBackground(Color.white);
 
         addKeyListener((KeyListener) this);
@@ -27,36 +27,37 @@ public class InstructionPanel extends JPanel implements ActionListener, KeyListe
         timer.start();
 
         back = new JButton();
-        back.setBounds(0, 0, 80, 30);
-        back.setText("BACK");
+        back.setBounds(0, 0, 140, 30);
+        back.setText("BACK TO MENU");
         back.setBackground(Color.cyan);
         back.addActionListener(this);
 
-        next = new JButton();
-        next.setBounds(864, 471, 80, 30);
-        next.setText("NEXT");
-        next.setBackground(Color.green);
-        next.addActionListener(this);
+        prev = new JButton();
+        prev.setBounds(0, 471, 80, 30);
+        prev.setText("PREV");
+        prev.setBackground(Color.YELLOW);
+        prev.addActionListener(this);
 
         this.setLayout(null);
 
         this.add(back);
-        this.add(next);
+        this.add(prev);
     }
 
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == back){
             Frame.lay.show(Frame.cont, "Menu Panel");
         }
-        if(e.getSource() == next){
-            Frame.lay.show(Frame.cont, "Control Panel");
+        if(e.getSource() == prev){
+            Frame.lay.show(Frame.cont, "Instructions");
         }
+
 
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(instructions, 0, -50, null);
+        g.drawImage(controls, 0, -50, null);
     }
 
     public void keyTyped(KeyEvent e) {
@@ -70,7 +71,6 @@ public class InstructionPanel extends JPanel implements ActionListener, KeyListe
     public void keyReleased(KeyEvent e) {
 
     }
-
     private BufferedImage getImage(String path){
         BufferedImage img;
         try{

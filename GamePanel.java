@@ -12,9 +12,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     private Tank player1;
     private Tank2 player2;
     public static boolean player1turn;
-    long startTime, endTime;
     Sprites sprites = new Sprites();
     Laser laser;
+    Missile missile;
 
     public GamePanel(){
         setBackground(Color.white);
@@ -44,6 +44,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         player2.myDraw(g);
         if(laser.shootLaser) {
             laser.draw(g);
+        }
+        if(missile.shootMissile){
+            missile.myDraw(g);
         }
 
     }
@@ -79,6 +82,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             if(e.getKeyCode() == e.VK_E){
                 laser = new Laser(player1.getX(), player1.getY(), player1turn);
                 laser.shootLaser = true;
+            }
+            if(e.getKeyCode() == e.VK_Q){
+                missile = new Missile(player1.getX(), player1.getY(), player1turn, 45);
+                missile.shootMissile = true;
             }
         }else {
             Tank.fuel = 10;
