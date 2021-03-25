@@ -1,3 +1,4 @@
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -11,7 +12,7 @@ public class Frame extends JFrame{
         cont = this.getContentPane();
         lay = new CardLayout();
         cont.setLayout(lay);
-        
+
         Menu m = new Menu();
         InstructionPanel instr = new InstructionPanel();
         mp = new GamePanel();

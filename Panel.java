@@ -50,4 +50,3 @@ public class Panel extends JPanel implements ActionListener, MouseListener, Mous
     }
 
 }
-
