@@ -7,6 +7,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
+    public static long startTime;
     private JButton back;
     private Timer timer;
     private Tank player1;
@@ -62,6 +63,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 laser.shoot();
                 repaint();
             }
+            if(missile.shootMissile){
+                if(player1turn) missile.shootProjectile(player1);
+                else missile.shootProjectile(player2);
+                repaint();
+            }
         }
 
     }
@@ -85,6 +91,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             }
             if(e.getKeyCode() == e.VK_Q){
                 missile = new Missile(player1.getX(), player1.getY(), player1turn, 45);
+                if(!missile.shootMissile) {
+                    startTime = System.currentTimeMillis();
+                }
                 missile.shootMissile = true;
             }
         }else {
@@ -98,6 +107,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             if(e.getKeyCode() == e.VK_O){
                 laser = new Laser(player2.getX(), player2.getY(), player1turn);
                 laser.shootLaser = true;
+            }
+            if(e.getKeyCode() == e.VK_U){
+                missile = new Missile(player2.getX(), player2.getY(), player1turn, 45);
+                if(!missile.shootMissile) {
+                    startTime = System.currentTimeMillis();
+                }
+                missile.shootMissile = true;
             }
         }
         repaint();
