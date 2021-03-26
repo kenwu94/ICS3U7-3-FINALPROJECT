@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.*;
 
 public class Missile {
-    private int damage = 0;
+    private int damage = 10;
     private int speed = 20;
     private int rad;
     public static boolean shootMissile = false;
@@ -28,7 +28,7 @@ public class Missile {
     }
 
     public void myDraw(Graphics g){
-        g.setColor(new Color(62, 92, 65));
+        g.setColor(Color.orange);
         g.fillOval((int)x, (int)y, rad, rad);
 
     }
@@ -42,7 +42,10 @@ public class Missile {
         y = tank.getY() + 30 - (ycomponent * ((System.currentTimeMillis() - GamePanel.startTime)/20) - 0.5 * 0.98 * Math.pow(((System.currentTimeMillis() - GamePanel.startTime)/20), 2));
         if(y > 600){
             GamePanel.player1turn = !GamePanel.player1turn;
+            GamePanel.canShoot = true;
             shootMissile = false;
+            GamePanel.mselected = false;
+            GamePanel.canHit = true;
         }
     }
 
@@ -55,13 +58,28 @@ public class Missile {
         y = tank.getY() + 30 - (ycomponent * ((System.currentTimeMillis() - GamePanel.startTime)/20) - 0.5 * 0.98 * Math.pow(((System.currentTimeMillis() - GamePanel.startTime)/20), 2));
         if(y > 600){
             GamePanel.player1turn = !GamePanel.player1turn;
+            GamePanel.canShoot = true;
             shootMissile = false;
+            GamePanel.mselected = false;
+            GamePanel.canHit = true;
         }
     }
 
     public void hitTarget(Tank x){
         x.setHp(x.getHp() - damage);
     }
+    public void hitTarget(Tank2 x){
+        x.setHp(x.getHp() - damage);
+    }
+
+    public double getX(){
+        return x;
+    }
+
+    public double getY(){
+        return y;
+    }
+
 
 
 }

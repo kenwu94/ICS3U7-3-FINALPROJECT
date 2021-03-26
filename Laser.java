@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Laser extends JComponent {
-    private int damage = 0;
+    private int damage = 5;
     private int width;
     private int height;
     public static boolean shootLaser = false;
@@ -34,14 +34,28 @@ public class Laser extends JComponent {
     public void shoot(){
         if(turn) x += 20;
         else x -= 20;
-        if(x > 1000 || x < 50) {
+        if(x > 1000 || x < -50) {
             shootLaser = false;
             GamePanel.player1turn = !GamePanel.player1turn;
+            GamePanel.canShoot = true;
+            GamePanel.lselected = false;
+            GamePanel.canHit = true;
         }
+    }
+
+    public int getX(){
+        return x;
+    }
+
+    public int getY(){
+        return y;
     }
 
 
     public void hitTarget(Tank x){
+        x.setHp(x.getHp() - damage);
+    }
+    public void hitTarget(Tank2 x){
         x.setHp(x.getHp() - damage);
     }
 
