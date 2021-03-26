@@ -26,6 +26,11 @@ public class Tank2 {
     public void myDraw(Graphics g){
         g.drawImage(Sprites.tank1[1], x, y, null);
         g.drawImage(Sprites.tank1[0], x+10, y, null);
+        if(hp <= 0){
+            EndPanel end = new EndPanel("Player 1");
+            Frame.cont.add(end, "End Panel");
+            Frame.lay.show(Frame.cont, "End Panel");
+        }
     }
 
     //method for the tank to move on flat ground

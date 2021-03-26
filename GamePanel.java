@@ -109,7 +109,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 }
             }
             else{
-                System.out.println(missile.getX() + " " + missile.getY() + " / " + player1.getX() + " " + player1.getY());
                 if(missile.getY() < player1.getY() + 64 && missile.getY() > player1.getY() && missile.getX() < player1.getX() + 64 && missile.getX() > player1.getX() && canHit) {
                     missile.hitTarget(player1);
                     canHit = false;

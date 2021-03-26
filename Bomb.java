@@ -43,6 +43,7 @@ public class Bomb {
             GamePanel.canShoot = true;
             shootBomb = false;
             GamePanel.bselected = false;
+            GamePanel.canHit = true;
         }
     }
 

@@ -3,8 +3,8 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Frame extends JFrame{
-    public static GamePanel mp;
     public static CardLayout lay;
+    public static Component mp;
     public static Container cont;
     //creates the frame
     public Frame(String title) {
@@ -18,10 +18,12 @@ public class Frame extends JFrame{
         ControlPanel contr = new ControlPanel();
         mp = new GamePanel();
 
+
         Frame.cont.add(m, "Menu Panel");
         Frame.cont.add(mp, "Game Panel");
         Frame.cont.add(instr, "Instructions");
         Frame.cont.add(contr, "Control Panel");
+
 
         this.setVisible(true);
         this.setSize(960,540);
