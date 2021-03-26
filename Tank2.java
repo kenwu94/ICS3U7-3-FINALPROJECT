@@ -11,6 +11,7 @@ public class Tank2 {
     private int power;
     private int x;
     private int y;
+    private double angle;
 
     //constructor
     public Tank2(int hp, int power){
@@ -18,14 +19,17 @@ public class Tank2 {
         this.power = power;
         this.x = 500;
         this.y = 300;
-        int fuel = 10;
+        this.angle = 0;
+        fuel = 10;
 
     }
 
     //draws the tank
     public void myDraw(Graphics g){
-        g.drawImage(Sprites.tank1[1], x, y, null);
-        g.drawImage(Sprites.tank1[0], x+10, y, null);
+    	int index = (int) angle;
+    	index = (index + 10)/10;
+    	g.drawImage(Sprites.tank2[index],x+20,y+19,null);
+        g.drawImage(Sprites.tank2[0], x+10, y, null);
         if(hp <= 0){
             EndPanel end = new EndPanel("Player 1");
             Frame.cont.add(end, "End Panel");
@@ -41,6 +45,17 @@ public class Tank2 {
     public void moveFlatLeft(){
         x-=3;
         fuel-=1;
+    }
+    public void moveAngleUp() {
+    	if(angle<80) {
+    		angle+=10;
+    	}
+    }
+    public void moveAngleDown() {
+    	if(angle>0) {
+    		angle-=10;
+    	}
+    	
     }
 
     public void drawHp(Graphics g){
@@ -74,6 +89,9 @@ public class Tank2 {
 
     public int getY(){
         return y;
+    }
+    public double getAngle() {
+    	return angle;
     }
 
 }
