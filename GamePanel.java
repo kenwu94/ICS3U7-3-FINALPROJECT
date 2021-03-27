@@ -188,6 +188,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             if(e.getKeyCode()== e.VK_D) {
                 if(Tank.fuel >= 0) player1.moveFlatRight();
             }
+            if(e.getKeyCode()== e.VK_W) {
+                player1.moveAngleUp();
+            }
+            if(e.getKeyCode()== e.VK_S) {
+                player1.moveAngleDown();
+            }
 
             if(e.getKeyCode() == e.VK_E){
                 if(lselected){
@@ -197,7 +203,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 }
                 else
                     if(mselected){
-                    missile = new Missile(player1.getX(), player1.getY(), player1turn, 45);
+                    missile = new Missile(player1.getX(), player1.getY(), player1turn, player1.getAngle());
+                    System.out.println(player1.getAngle());
                     if(!missile.shootMissile) {
                         startTime = System.currentTimeMillis();
                     }
@@ -206,7 +213,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 }
 
                 else if(bselected){
-                    bomb = new Bomb(player1.getX(), player1.getY(), player1turn, 45);
+                    bomb = new Bomb(player1.getX(), player1.getY(), player1turn, player1.getAngle());
                     if(!bomb.shootBomb){
                         startTime = System.currentTimeMillis();
                     }
@@ -223,6 +230,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             if(e.getKeyCode()== e.VK_L) {
                 if(Tank2.fuel >= 0) player2.moveFlatRight();
             }
+            if(e.getKeyCode()== e.VK_I) {
+                player2.moveAngleUp();
+            }
+            if(e.getKeyCode()== e.VK_K) {
+                player2.moveAngleDown();
+            }
             if(e.getKeyCode() == e.VK_O){
                 if(lselected){
                     laser = new Laser(player2.getX(), player2.getY(), player1turn);
@@ -231,7 +244,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 }
                 else
                 if(mselected){
-                    missile = new Missile(player2.getX(), player2.getY(), player1turn, 45);
+                    missile = new Missile(player2.getX(), player2.getY(), player1turn, player2.getAngle());
                     if(!missile.shootMissile) {
                         startTime = System.currentTimeMillis();
                     }
@@ -240,7 +253,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 }
 
                 else if(bselected){
-                    bomb = new Bomb(player2.getX(), player2.getY(), player1turn, 45);
+                    bomb = new Bomb(player2.getX(), player2.getY(), player1turn, player2.getAngle());
                     if(!bomb.shootBomb){
                         startTime = System.currentTimeMillis();
                     }
