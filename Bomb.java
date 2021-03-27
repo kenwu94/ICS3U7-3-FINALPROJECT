@@ -34,10 +34,14 @@ public class Bomb {
     }
 
     public void shootProjectile(Tank tank){
-        xcomponent = speed * Math.cos(angle);
-        ycomponent = speed * Math.sin(angle);
-        x = tank.getX() + 50 + xcomponent * ((System.currentTimeMillis() - GamePanel.startTime)/20);
-        y = tank.getY() + 30 - (ycomponent * ((System.currentTimeMillis() - GamePanel.startTime)/20) - 0.5 * 0.98 * Math.pow(((System.currentTimeMillis() - GamePanel.startTime)/20), 2));
+    	double radians = angle*Math.PI/180;
+        xcomponent = Math.abs(speed * Math.cos(radians));
+        ycomponent = Math.abs(speed * Math.sin(radians));
+//        to find the x position: x component*time
+//        to find the y position: y component * time - 1/2*gravity (t)^2
+        double time = (System.currentTimeMillis()-GamePanel.startTime)/20;
+        x = tank.getX()+ 50 + xcomponent * time;
+        y = tank.getY() + 30 - (ycomponent * time - 0.5 * 0.98 * Math.pow(time, 2));
         if(y > 600){
             GamePanel.player1turn = !GamePanel.player1turn;
             GamePanel.canShoot = true;
@@ -48,10 +52,14 @@ public class Bomb {
     }
 
     public void shootProjectile(Tank2 tank){
-        xcomponent = speed * Math.cos(angle);
-        ycomponent = speed * Math.sin(angle);
-        x = tank.getX() - (xcomponent * ((System.currentTimeMillis() - GamePanel.startTime)/20));
-        y = tank.getY() + 30 - (ycomponent * ((System.currentTimeMillis() - GamePanel.startTime)/20) - 0.5 * 0.98 * Math.pow(((System.currentTimeMillis() - GamePanel.startTime)/20), 2));
+    	double radians = angle*Math.PI/180;
+        xcomponent = Math.abs(speed * Math.cos(radians));
+        ycomponent = Math.abs(speed * Math.sin(radians));
+//        to find the x position: x component*time
+//        to find the y position: y component * time - 1/2*gravity (t)^2
+        double time = (System.currentTimeMillis()-GamePanel.startTime)/20;
+        x = tank.getX() - (xcomponent * time);
+        y = tank.getY() + 30 - (ycomponent * (time) - 0.5 * 0.98 * Math.pow(time, 2));
         if(y > 600){
             GamePanel.player1turn = !GamePanel.player1turn;
             GamePanel.canShoot = true;
