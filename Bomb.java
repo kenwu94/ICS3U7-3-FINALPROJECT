@@ -34,7 +34,7 @@ public class Bomb {
     }
 
     public void shootProjectile(Tank tank){
-    	double radians = angle*Math.PI/180;
+        double radians = angle*Math.PI/180;
         xcomponent = Math.abs(speed * Math.cos(radians));
         ycomponent = Math.abs(speed * Math.sin(radians));
 //        to find the x position: x component*time
@@ -52,7 +52,7 @@ public class Bomb {
     }
 
     public void shootProjectile(Tank2 tank){
-    	double radians = angle*Math.PI/180;
+        double radians = angle*Math.PI/180;
         xcomponent = Math.abs(speed * Math.cos(radians));
         ycomponent = Math.abs(speed * Math.sin(radians));
 //        to find the x position: x component*time

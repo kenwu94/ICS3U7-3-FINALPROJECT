@@ -25,9 +25,9 @@ public class Tank {
 
     //draws the tank
     public void myDraw(Graphics g){
-    	int index = (int) angle;
-    	index = (index + 10)/10;
-    	g.drawImage(Sprites.tank1[index],x+23,y+18,null);
+        int index = (int) angle;
+        index = (index + 10)/10;
+        g.drawImage(Sprites.tank1[index],x+23,y+18,null);
         g.drawImage(Sprites.tank1[0], x, y, null);
         if(hp <= 0){
             EndPanel end = new EndPanel("Player 2");
@@ -46,15 +46,15 @@ public class Tank {
         fuel-=1;
     }
     public void moveAngleUp() {
-    	if(angle<80) {
-    		angle+=10;
-    	}
+        if(angle<80) {
+            angle+=10;
+        }
     }
     public void moveAngleDown() {
-    	if(angle>0) {
-    		angle-=10;
-    	}
-    	
+        if(angle>0) {
+            angle-=10;
+        }
+
     }
 
     public void drawHp(Graphics g){
@@ -92,7 +92,11 @@ public class Tank {
         return y;
     }
     public double getAngle() {
-    	return angle;
+        return angle;
     }
+    public void setAngle(double angle) {
+        this.angle = angle;
+    }
+
 
 }

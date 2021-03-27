@@ -13,12 +13,12 @@ public class Sprites {
         tank2 = new BufferedImage[10];
         tank2[0] = getImage("images/tank0.png");
         for(int i = 1;i<10;i++) {
-        	int index = 10*(i-1);
-        	tank1[i] = getImage("turret1/"+"degree"+index+".png");
+            int index = 10*(i-1);
+            tank1[i] = getImage("turret1/"+"degree"+index+".png");
         }
         for(int i = 1;i<10;i++) {
-        	int index = 10*(i-1);
-        	tank2[i] = getImage("turret2/"+"degree"+index+".png");
+            int index = 10*(i-1);
+            tank2[i] = getImage("turret2/"+"degree"+index+".png");
         }
 
     }

@@ -20,6 +20,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     public static boolean canShoot = true;
     public static boolean lselected, mselected, bselected;
     public static boolean canHit = true;
+    private int drawn = 0;
 
     public GamePanel(){
         setBackground(Color.white);
@@ -85,6 +86,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         player1.drawHp(g);
         player2.myDraw(g);
         player2.drawHp(g);
+
         if(laser.shootLaser) {
             laser.draw(g);
             if(player1turn) {
@@ -131,6 +133,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             }
         }
 
+
     }
 
 
@@ -145,14 +148,24 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         }
         if(e.getSource() == lbutton && canShoot){
             lselected = true;
+            if(player1turn) player1.setAngle(0);
+            else player2.setAngle(0);
+            repaint();
+        }
+        if(lselected){
+            if(player1turn) player1.setAngle(0);
+            else player2.setAngle(0);
         }
 
         if(e.getSource() == mbutton && canShoot){
             mselected = true;
+            lselected = false;
         }
+
 
         if(e.getSource() == bbutton && canShoot){
             bselected = true;
+            lselected = false;
         }
 
         if(e.getSource()==timer) {
@@ -189,10 +202,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 if(Tank.fuel >= 0) player1.moveFlatRight();
             }
             if(e.getKeyCode()== e.VK_W) {
-                player1.moveAngleUp();
+                if(!lselected) player1.moveAngleUp();
             }
             if(e.getKeyCode()== e.VK_S) {
-                player1.moveAngleDown();
+                if(!lselected) player1.moveAngleDown();
             }
 
             if(e.getKeyCode() == e.VK_E){
@@ -202,9 +215,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                     canShoot = false;
                 }
                 else
-                    if(mselected){
+                if(mselected){
                     missile = new Missile(player1.getX(), player1.getY(), player1turn, player1.getAngle());
-                    System.out.println(player1.getAngle());
                     if(!missile.shootMissile) {
                         startTime = System.currentTimeMillis();
                     }
@@ -231,10 +243,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 if(Tank2.fuel >= 0) player2.moveFlatRight();
             }
             if(e.getKeyCode()== e.VK_I) {
-                player2.moveAngleUp();
+                if(!lselected) player2.moveAngleUp();
             }
             if(e.getKeyCode()== e.VK_K) {
-                player2.moveAngleDown();
+                if(!lselected) player2.moveAngleDown();
             }
             if(e.getKeyCode() == e.VK_O){
                 if(lselected){
@@ -259,13 +271,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                     }
                     bomb.shootBomb = true;
                     canShoot = false;
-                    }
                 }
             }
+        }
         repaint();
     }
 
     public void keyReleased(KeyEvent e) {
 
     }
+
 }
