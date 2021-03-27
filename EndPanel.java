@@ -43,12 +43,16 @@ public class EndPanel extends JPanel implements ActionListener, KeyListener {
         again.setText("PLAY AGAIN");
         again.setBackground(Color.YELLOW);
         again.addActionListener(this);
+        again.setFocusable(false);
 
         this.setLayout(null);
 
         this.add(back);
         this.add(again);
         this.add(title);
+
+        GamePanel newGame = new GamePanel();
+        Frame.cont.add(newGame, "Game Panel");
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -56,7 +60,7 @@ public class EndPanel extends JPanel implements ActionListener, KeyListener {
             Frame.lay.show(Frame.cont, "Menu Panel");
         }
         if (e.getSource() == again) {
-            Frame.lay.show(Frame.cont, "Game Panel ");
+            Frame.lay.show(Frame.cont, "Game Panel");
         }
 
 

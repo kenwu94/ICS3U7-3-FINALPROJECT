@@ -144,9 +144,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             Frame.lay.show(Frame.cont, "Menu Panel");
         }
         if(e.getSource() == skipTurn){
-            if(player1turn) Tank2.fuel = 10;
-            else Tank.fuel = 10;
+            Tank2.fuel = 10;
+            Tank.fuel = 10;
             player1turn = !player1turn;
+            repaint();
         }
         if(e.getSource() == lbutton && canShoot){
             lselected = true;
@@ -198,10 +199,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         if(player1turn) {
             Tank2.fuel = 10;
             if(e.getKeyCode()== e.VK_A) {
-                if(Tank.fuel >= 0) player1.moveFlatLeft();
+                if(Tank.fuel > 0) player1.moveFlatLeft();
             }
             if(e.getKeyCode()== e.VK_D) {
-                if(Tank.fuel >= 0) player1.moveFlatRight();
+                if(Tank.fuel > 0) player1.moveFlatRight();
             }
             if(e.getKeyCode()== e.VK_W) {
                 if(!lselected) player1.moveAngleUp();
@@ -239,10 +240,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         else {
             Tank.fuel = 10;
             if(e.getKeyCode()== e.VK_J) {
-                if(Tank2.fuel >= 0) player2.moveFlatLeft();
+                if(Tank2.fuel > 0) player2.moveFlatLeft();
             }
             if(e.getKeyCode()== e.VK_L) {
-                if(Tank2.fuel >= 0) player2.moveFlatRight();
+                if(Tank2.fuel > 0) player2.moveFlatRight();
             }
             if(e.getKeyCode()== e.VK_I) {
                 if(!lselected) player2.moveAngleUp();
