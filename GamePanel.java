@@ -84,8 +84,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         super.paintComponent(g);
         player1.myDraw(g);
         player1.drawHp(g);
+        player1.drawFuel(g);
         player2.myDraw(g);
         player2.drawHp(g);
+        player2.drawFuel(g);
 
         if(laser.shootLaser) {
             laser.draw(g);

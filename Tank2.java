@@ -59,11 +59,20 @@ public class Tank2 {
 
     public void drawHp(Graphics g){
         g.setColor(Color.black);
-        g.drawRect(740, 399, 201, 61);
+        g.drawRect(739, 399, 201, 61);
         g.setColor(Color.RED);
         g.fillRect(740, 400, 200, 60);
         g.setColor(Color.green);
         g.fillRect(740, 400, hp * 2, 60);
+    }
+
+    public void drawFuel(Graphics g){
+        g.setColor(Color.black);
+        g.drawRect(839, 464, 101, 16);
+        g.setColor(Color.darkGray);
+        g.fillRect(840, 465, 100, 15);
+        g.setColor(Color.orange);
+        g.fillRect(840, 465, fuel*10, 15);
     }
 
     //method for the tank to move on non-flat ground
