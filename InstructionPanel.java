@@ -46,10 +46,10 @@ public class InstructionPanel extends JPanel implements ActionListener, KeyListe
 
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == back){
-            Frame.lay.show(Frame.cont, "Menu Panel");
+            MyFrame.lay.show(MyFrame.cont, "Menu Panel");
         }
         if(e.getSource() == next){
-            Frame.lay.show(Frame.cont, "Control Panel");
+            MyFrame.lay.show(MyFrame.cont, "Control Panel");
         }
 
     }

@@ -145,7 +145,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == back){
-            Frame.lay.show(Frame.cont, "Menu Panel");
+            MyFrame.lay.show(MyFrame.cont, "Menu Panel");
         }
         if(e.getSource() == skipTurn){
             player2.setFuel(10);

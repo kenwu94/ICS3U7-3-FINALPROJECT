@@ -19,8 +19,8 @@ public class Tank2 extends Tank{
         g.drawImage(Sprites.tank2[0], x+10, y, null);
         if(hp <= 0){
             EndPanel end = new EndPanel("Player 1");
-            Frame.cont.add(end, "End Panel");
-            Frame.lay.show(Frame.cont, "End Panel");
+            MyFrame.cont.add(end, "End Panel");
+            MyFrame.lay.show(MyFrame.cont, "End Panel");
         }
     }
 

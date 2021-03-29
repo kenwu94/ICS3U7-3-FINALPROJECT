@@ -51,15 +51,15 @@ public class EndPanel extends JPanel implements ActionListener, KeyListener {
         this.add(title);
 
         GamePanel newGame = new GamePanel();
-        Frame.cont.add(newGame, "New Game Panel");
+        MyFrame.cont.add(newGame, "New Game Panel");
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == back) {
-            Frame.lay.show(Frame.cont, "Menu Panel");
+            MyFrame.lay.show(MyFrame.cont, "Menu Panel");
         }
         if (e.getSource() == again) {
-            Frame.lay.show(Frame.cont, "New Game Panel");
+            MyFrame.lay.show(MyFrame.cont, "New Game Panel");
         }
 
 
