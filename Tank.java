@@ -5,31 +5,27 @@ import java.awt.image.ImageObserver;
 //class for the tanks
 public class Tank {
     //different tanks will have different hp values
-    private int hp;
-    private int power;
-    private int x;
-    private int y;
-    private double angle;
-    public static int fuel;
+    int hp, power, x, y;
+    double angle;
+    int fuel;
 
     //constructor
-    public Tank(int hp, int power){
+    public Tank(int hp, int power, int x, int y){
         this.hp = hp;
         this.power = power;
-        this.x = 100;
-        this.y = 300;
+        this.x = x;
         this.angle = 0;
+        this.y = y;
         fuel = 10;
-
     }
 
     //draws the tank
     public void myDraw(Graphics g){
         int index = (int) angle;
-        index = (index + 10)/10;
-        g.drawImage(Sprites.tank1[index],x+23,y+18,null);
+        index = (index + 10) / 10;
+        g.drawImage(Sprites.tank1[index], x + 23, y + 18, null);
         g.drawImage(Sprites.tank1[0], x, y, null);
-        if(hp <= 0){
+        if (hp <= 0) {
             EndPanel end = new EndPanel("Player 2");
             Frame.cont.add(end, "End Panel");
             Frame.lay.show(Frame.cont, "End Panel");
@@ -46,6 +42,7 @@ public class Tank {
         fuel-=1;
     }
     public void moveAngleUp() {
+        System.out.println(x);
         if(angle<80) {
             angle+=10;
         }
@@ -57,22 +54,22 @@ public class Tank {
 
     }
 
-    public void drawHp(Graphics g){
+    public void drawHp(Graphics g, int x){
         g.setColor(Color.black);
-        g.drawRect(4, 399, 201, 61);
+        g.drawRect(x-1, 399, 201, 61);
         g.setColor(Color.RED);
-        g.fillRect(5, 400, 200, 60);
+        g.fillRect(x, 400, 200, 60);
         g.setColor(Color.green);
-        g.fillRect(5, 400, hp * 2, 60);
+        g.fillRect(x, 400, hp * 2, 60);
     }
 
-    public void drawFuel(Graphics g){
+    public void drawFuel(Graphics g, int x){
         g.setColor(Color.black);
-        g.drawRect(4, 464, 101, 16);
+        g.drawRect(x-1, 464, 101, 16);
         g.setColor(Color.darkGray);
-        g.fillRect(5, 465, 100, 15);
+        g.fillRect(x, 465, 100, 15);
         g.setColor(Color.orange);
-        g.fillRect(5, 465, fuel*10, 15);
+        g.fillRect(x, 465, fuel*10, 15);
     }
 
 
@@ -105,6 +102,12 @@ public class Tank {
     }
     public void setAngle(double angle) {
         this.angle = angle;
+    }
+    public int getFuel(){
+        return fuel;
+    }
+    public void setFuel(int fuel){
+        this.fuel = fuel;
     }
 
 

@@ -25,6 +25,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     public GamePanel(){
         setBackground(Color.white);
         this.addKeyListener(this);
+        this.setFocusable(true);
+        this.requestFocusInWindow();
 
         timer = new Timer(5, this);
         timer.start();
@@ -74,20 +76,22 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         this.add(bbutton);
         this.add(skipTurn);
 
-        player1 = new Tank(100, 10);
-        player2 = new Tank2(100,10);
+        player1 = new Tank(100, 10, 100, 300);
+        player2 = new Tank2(100,10, 500, 300);
         player1turn = true;
+
+
 
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         player1.myDraw(g);
-        player1.drawHp(g);
-        player1.drawFuel(g);
+        player1.drawHp(g, 5);
+        player1.drawFuel(g, 5);
         player2.myDraw(g);
-        player2.drawHp(g);
-        player2.drawFuel(g);
+        player2.drawHp(g, 740);
+        player2.drawFuel(g, 840);
 
         if(laser.shootLaser) {
             laser.draw(g);
@@ -144,8 +148,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             Frame.lay.show(Frame.cont, "Menu Panel");
         }
         if(e.getSource() == skipTurn){
-            Tank2.fuel = 10;
-            Tank.fuel = 10;
+            player2.setFuel(10);
+            player1.setFuel(10);
             player1turn = !player1turn;
             repaint();
         }
@@ -197,12 +201,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
     public void keyPressed(KeyEvent e) {
         if(player1turn) {
-            Tank2.fuel = 10;
+            player2.setFuel(10);
             if(e.getKeyCode()== e.VK_A) {
-                if(Tank.fuel > 0) player1.moveFlatLeft();
+                if(player1.getFuel() > 0) player1.moveFlatLeft();
             }
             if(e.getKeyCode()== e.VK_D) {
-                if(Tank.fuel > 0) player1.moveFlatRight();
+                if(player1.getFuel() > 0) player1.moveFlatRight();
             }
             if(e.getKeyCode()== e.VK_W) {
                 if(!lselected) player1.moveAngleUp();
@@ -212,7 +216,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             }
 
             if(e.getKeyCode() == e.VK_E){
-                if(lselected){
+                if(lselected && canShoot){
                     laser = new Laser(player1.getX(), player1.getY(), player1turn);
                     laser.shootLaser = true;
                     canShoot = false;
@@ -238,12 +242,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             }
         }
         else {
-            Tank.fuel = 10;
+            player1.setFuel(10);
             if(e.getKeyCode()== e.VK_J) {
-                if(Tank2.fuel > 0) player2.moveFlatLeft();
+                if(player2.getFuel() > 0) player2.moveFlatLeft();
             }
             if(e.getKeyCode()== e.VK_L) {
-                if(Tank2.fuel > 0) player2.moveFlatRight();
+                if(player2.getFuel() > 0) player2.moveFlatRight();
             }
             if(e.getKeyCode()== e.VK_I) {
                 if(!lselected) player2.moveAngleUp();
@@ -252,7 +256,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 if(!lselected) player2.moveAngleDown();
             }
             if(e.getKeyCode() == e.VK_O){
-                if(lselected){
+                if(lselected && canShoot){
                     laser = new Laser(player2.getX(), player2.getY(), player1turn);
                     laser.shootLaser = true;
                     canShoot = false;

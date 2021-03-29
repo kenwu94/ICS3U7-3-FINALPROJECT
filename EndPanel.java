@@ -20,7 +20,6 @@ public class EndPanel extends JPanel implements ActionListener, KeyListener {
 
         setBackground(Color.white);
 
-        addKeyListener((KeyListener) this);
         setFocusable(true);
         this.requestFocusInWindow();
 
@@ -52,7 +51,7 @@ public class EndPanel extends JPanel implements ActionListener, KeyListener {
         this.add(title);
 
         GamePanel newGame = new GamePanel();
-        Frame.cont.add(newGame, "Game Panel");
+        Frame.cont.add(newGame, "New Game Panel");
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -60,7 +59,7 @@ public class EndPanel extends JPanel implements ActionListener, KeyListener {
             Frame.lay.show(Frame.cont, "Menu Panel");
         }
         if (e.getSource() == again) {
-            Frame.lay.show(Frame.cont, "Game Panel");
+            Frame.lay.show(Frame.cont, "New Game Panel");
         }
 
 
