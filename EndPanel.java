@@ -49,9 +49,9 @@ public class EndPanel extends JPanel implements ActionListener, KeyListener {
         this.add(back);
         this.add(again);
         this.add(title);
+        TankSelect newTs = new TankSelect();
 
-        GamePanel newGame = new GamePanel();
-        MyFrame.cont.add(newGame, "New Game Panel");
+        MyFrame.cont.add(newTs, "New Tank Selection");
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -59,7 +59,7 @@ public class EndPanel extends JPanel implements ActionListener, KeyListener {
             MyFrame.lay.show(MyFrame.cont, "Menu Panel");
         }
         if (e.getSource() == again) {
-            MyFrame.lay.show(MyFrame.cont, "New Game Panel");
+            MyFrame.lay.show(MyFrame.cont, "New Tank Selection");
         }
 
 

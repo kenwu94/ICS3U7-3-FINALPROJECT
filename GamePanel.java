@@ -45,6 +45,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         lbutton.addActionListener(this);
         lbutton.setFocusable(false);
 
+
         mbutton = new JButton();
         mbutton.setBounds(430, 400, 100, 40);
         mbutton.setText("Missile");

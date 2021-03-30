@@ -9,13 +9,15 @@ public class TankSelect extends JPanel implements ActionListener, KeyListener {
     private Timer timer;
     private JButton fastTank, heavyTank, armoredTank;
     private JLabel player1picking, player2picking;
-    private boolean player1pick = true;
+    private boolean player1pick;
     private static int[] hp = new int[2];
     private static int[] speed = new int[2];
     private static int[] power = new int[2];
     private int listIndex = 0;
 
     public TankSelect(){
+
+        player1pick =true;
         timer = new Timer(5, this);
         timer.start();
 

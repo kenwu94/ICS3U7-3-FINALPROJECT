@@ -45,7 +45,6 @@ public class Tank {
         fuel-=1;
     }
     public void moveAngleUp() {
-        System.out.println(x);
         if(angle<80) {
             angle+=10;
         }
