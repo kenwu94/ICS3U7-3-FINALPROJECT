@@ -16,7 +16,6 @@ public class InstructionPanel extends JPanel implements ActionListener, KeyListe
 
     public InstructionPanel(){
 
-        instructions = getImage("images/instructions.png");
         setBackground(Color.white);
 
         addKeyListener((KeyListener) this);
@@ -56,7 +55,7 @@ public class InstructionPanel extends JPanel implements ActionListener, KeyListe
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(instructions, 0, -50, null);
+        g.drawImage(Sprites.instructions, 0, -50, null);
     }
 
     public void keyTyped(KeyEvent e) {
@@ -71,18 +70,5 @@ public class InstructionPanel extends JPanel implements ActionListener, KeyListe
 
     }
 
-    private BufferedImage getImage(String path){
-        BufferedImage img;
-        try{
-            img = ImageIO.read(new File(path));
-            return img;
-        }
-        catch(IOException e){
-            System.out.println("Something is wrong with file reading" + e);
-        }
-        catch(Exception ee){
-            System.out.println(ee);
-        }
-        return null;
-    }
+    
 }

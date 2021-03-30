@@ -16,7 +16,6 @@ public class ControlPanel extends JPanel implements ActionListener, KeyListener 
 
     public ControlPanel(){
 
-        controls = getImage("images/controls.png");
         setBackground(Color.white);
 
         addKeyListener((KeyListener) this);
@@ -57,7 +56,7 @@ public class ControlPanel extends JPanel implements ActionListener, KeyListener 
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(controls, 0, -50, null);
+        g.drawImage(Sprites.controls, 200, 0,560,500, null);
     }
 
     public void keyTyped(KeyEvent e) {
@@ -71,18 +70,5 @@ public class ControlPanel extends JPanel implements ActionListener, KeyListener 
     public void keyReleased(KeyEvent e) {
 
     }
-    private BufferedImage getImage(String path){
-        BufferedImage img;
-        try{
-            img = ImageIO.read(new File(path));
-            return img;
-        }
-        catch(IOException e){
-            System.out.println("Something is wrong with file reading" + e);
-        }
-        catch(Exception ee){
-            System.out.println(ee);
-        }
-        return null;
-    }
+    
 }

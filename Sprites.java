@@ -4,7 +4,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class Sprites {
-    public static BufferedImage[] tank1, tank2;
+    public static BufferedImage[] tank1, tank2,projectiles;
+    public static BufferedImage instructions,controls;
     private String path;
 
     public Sprites() {
@@ -12,6 +13,9 @@ public class Sprites {
         tank1[0] = getImage("images/tank2.png");
         tank2 = new BufferedImage[10];
         tank2[0] = getImage("images/tank0.png");
+        instructions = getImage("images/instructions.png");
+        controls = getImage("images/controls.png");
+        projectiles = new BufferedImage[4];
         for(int i = 1;i<10;i++) {
             int index = 10*(i-1);
             tank1[i] = getImage("turret1/"+"degree"+index+".png");
@@ -19,6 +23,9 @@ public class Sprites {
         for(int i = 1;i<10;i++) {
             int index = 10*(i-1);
             tank2[i] = getImage("turret2/"+"degree"+index+".png");
+        }
+        for(int i = 0; i<4 ;i++) {
+            projectiles[i] = getImage("projectiles/projectile"+i+".png");
         }
 
     }

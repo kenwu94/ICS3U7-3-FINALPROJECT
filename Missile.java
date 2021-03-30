@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.awt.*;
 
 public class Missile {
@@ -11,6 +12,7 @@ public class Missile {
     private boolean turn;
     private double angle;
     private double xcomponent, ycomponent;
+    private BufferedImage img;
 
     public Missile(int x, int y, boolean turn, double angle) {
         this.speed = 20;
@@ -19,9 +21,11 @@ public class Missile {
         this.angle = angle;
         if(turn) {
             this.x = x + 50;
+            img = Sprites.projectiles[1];
         }
         else{
             this.x = x - 50;
+            img = Sprites.projectiles[3];
         }
         this.y = y + 28;
 
@@ -30,6 +34,8 @@ public class Missile {
     public void myDraw(Graphics g){
         g.setColor(Color.orange);
         g.fillOval((int)x, (int)y, rad, rad);
+        g.drawImage(img, (int)x,(int)y-10,null);
+        
 
     }
 

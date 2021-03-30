@@ -30,6 +30,7 @@ public class Bomb {
     public void myDraw(Graphics g){
         g.setColor(Color.black);
         g.fillOval((int)x, (int)y, rad, rad);
+        g.drawImage(Sprites.projectiles[0],(int)x-10,(int)y-10,null);
 
     }
 

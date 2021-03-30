@@ -25,9 +25,7 @@ public class Laser extends JComponent {
     }
 
     public void draw(Graphics g) {
-        g.setColor(Color.cyan);
-        g.fillRect(x, y, width, height);
-        g.drawRect(x, y, width, height);
+        g.drawImage(Sprites.projectiles[2], x,y-15,null);
 
     }
 
