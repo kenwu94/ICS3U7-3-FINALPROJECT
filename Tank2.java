@@ -5,8 +5,8 @@ import java.awt.image.ImageObserver;
 //class for the tanks
 public class Tank2 extends Tank{
     //constructor
-    public Tank2(int hp, int power, int x, int y){
-        super(hp, power, x, y);
+    public Tank2(int hp, int speed, int power, int x, int y){
+        super(hp, speed, power, x, y);
         this.angle = 0;
         fuel = 10;
     }

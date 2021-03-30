@@ -5,18 +5,20 @@ import java.awt.image.ImageObserver;
 //class for the tanks
 public class Tank {
     //different tanks will have different hp values
-    int hp, power, x, y;
+    int hp, speed, power, x, y;
     double angle;
     int fuel;
 
     //constructor
-    public Tank(int hp, int power, int x, int y){
+    public Tank(int hp, int speed, int power, int x, int y){
         this.hp = hp;
+        this.speed = speed;
         this.power = power;
         this.x = x;
         this.angle = 0;
         this.y = y;
         fuel = 10;
+
     }
 
     //draws the tank

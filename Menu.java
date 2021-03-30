@@ -51,7 +51,7 @@ public class Menu extends JPanel implements ActionListener {
             System.exit(0);
         }
         else if(e.getSource() == play) {
-            MyFrame.lay.show(MyFrame.cont, "Game Panel");
+            MyFrame.lay.show(MyFrame.cont, "Tank Selection");
             MyFrame.mp.requestFocusInWindow();
             MyFrame.mp.setFocusable(true);
 

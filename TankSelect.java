@@ -8,6 +8,12 @@ import java.awt.event.KeyListener;
 public class TankSelect extends JPanel implements ActionListener, KeyListener {
     private Timer timer;
     private JButton fastTank, heavyTank, armoredTank;
+    private JLabel player1picking, player2picking;
+    private boolean player1pick = true;
+    private static int[] hp = new int[2];
+    private static int[] speed = new int[2];
+    private static int[] power = new int[2];
+    private int listIndex = 0;
 
     public TankSelect(){
         timer = new Timer(5, this);
@@ -18,6 +24,16 @@ public class TankSelect extends JPanel implements ActionListener, KeyListener {
         setFocusable(true);
         this.requestFocusInWindow();
 
+        player1picking = new JLabel();
+        player1picking.setText("Player 1 is Picking...");
+        player1picking.setLocation(50, 50);
+        player1picking.setSize(400, 100);
+
+        player2picking = new JLabel();
+        player2picking.setText("Player 2 is Picking...");
+        player2picking.setLocation(50, 50);
+        player2picking.setSize(400, 100);
+
         fastTank = new JButton();
         fastTank.setBounds(180, 240, 140, 60);
         fastTank.setText("Fast Tank");
@@ -25,14 +41,14 @@ public class TankSelect extends JPanel implements ActionListener, KeyListener {
         fastTank.addActionListener(this);
 
         heavyTank = new JButton();
-        heavyTank.setBounds(180, 240, 140, 60);
-        heavyTank.setText("Fast Tank");
+        heavyTank.setBounds(330, 240, 140, 60);
+        heavyTank.setText("Heavy Tank");
         heavyTank.setBackground(Color.cyan);
         heavyTank.addActionListener(this);
 
         armoredTank = new JButton();
-        armoredTank.setBounds(180, 240, 140, 60);
-        armoredTank.setText("Fast Tank");
+        armoredTank.setBounds(480, 240, 140, 60);
+        armoredTank.setText("Armored Tank");
         armoredTank.setBackground(Color.cyan);
         armoredTank.addActionListener(this);
 
@@ -41,14 +57,69 @@ public class TankSelect extends JPanel implements ActionListener, KeyListener {
         this.add(fastTank);
         this.add(heavyTank);
         this.add(armoredTank);
+
+
     }
 
 
     public void actionPerformed(ActionEvent e) {
+        if(player1pick) this.add(player1picking);
+        else{
+            this.add(player2picking);
+
+        }
+        repaint();
+        if(player1pick) listIndex = 0;
+        else listIndex = 1;
         if(e.getSource() == fastTank){
+            System.out.println(player1pick);
+            hp[listIndex] = 75;
+            speed[listIndex] = 5;
+            power[listIndex] = 10;
+            if(!player1pick){
+                System.out.println("got here");
+                MyFrame.lay.show(MyFrame.cont, "Game Panel");
+                MyFrame.mp.requestFocusInWindow();
+                MyFrame.mp.setFocusable(true);
+                for(int i = 0; i < 2; i++){
+                    System.out.println(hp[i] + " " + speed[i] + " " + power[i]);
+                }
+            }
+            player1pick = false;
 
         }
 
+        if(e.getSource() == heavyTank){
+            hp[listIndex] = 100;
+            speed[listIndex] = 2;
+            power[listIndex] = 15;
+            if(!player1pick){
+                System.out.println("got here");
+                MyFrame.lay.show(MyFrame.cont, "Game Panel");
+                MyFrame.mp.requestFocusInWindow();
+                MyFrame.mp.setFocusable(true);
+                for(int i = 0; i < 2; i++){
+                    System.out.println(hp[i] + " " + speed[i] + " " + power[i]);
+                }
+            }
+            player1pick = false;
+        }
+
+        if (e.getSource() == armoredTank) {
+            hp[listIndex] = 150;
+            speed[listIndex] = 2;
+            power[listIndex] = 10;
+            if(!player1pick){
+                System.out.println("got here");
+                MyFrame.lay.show(MyFrame.cont, "Game Panel");
+                MyFrame.mp.requestFocusInWindow();
+                MyFrame.mp.setFocusable(true);
+                for(int i = 0; i < 2; i++){
+                    System.out.println(hp[i] + " " + speed[i] + " " + power[i]);
+                }
+            }
+            player1pick = false;
+        }
     }
 
 
@@ -64,5 +135,17 @@ public class TankSelect extends JPanel implements ActionListener, KeyListener {
 
     public void keyReleased(KeyEvent e) {
 
+    }
+
+    public static int getHp(int index){
+        return hp[index];
+    }
+
+    public static int getSpeed(int index){
+        return speed[index];
+    }
+
+    public static int getPower(int index){
+        return power[index];
     }
 }

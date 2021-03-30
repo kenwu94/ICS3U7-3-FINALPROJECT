@@ -17,6 +17,8 @@ public class Frame extends JFrame{
         InstructionPanel instr = new InstructionPanel();
         ControlPanel contr = new ControlPanel();
         mp = new GamePanel();
+        TankSelect ts = new TankSelect();
+
 
 
         Frame.cont.add(m, "Menu Panel");

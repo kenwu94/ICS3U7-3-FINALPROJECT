@@ -76,8 +76,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         this.add(bbutton);
         this.add(skipTurn);
 
-        player1 = new Tank(100, 10, 100, 300);
-        player2 = new Tank2(100,10, 500, 300);
+        player1 = new Tank(MyFrame.ts.getHp(0), MyFrame.ts.getSpeed(0), MyFrame.ts.getPower(0), 100, 300);
+        player2 = new Tank2(MyFrame.ts.getHp(1), MyFrame.ts.getSpeed(1), MyFrame.ts.getPower(1), 500, 300);
         player1turn = true;
 
 
