@@ -8,6 +8,7 @@ public class Tank {
     int hp, speed, power, x, y;
     double angle;
     int fuel;
+    int hpwidth;
 
     //constructor
     public Tank(int hp, int speed, int power, int x, int y){
@@ -18,7 +19,7 @@ public class Tank {
         this.angle = 0;
         this.y = y;
         fuel = 10;
-
+        hpwidth = hp*2;
     }
 
     //draws the tank
@@ -36,11 +37,11 @@ public class Tank {
 
     //method for the tank to move on flat ground
     public void moveFlatRight(){
-        x+=3;
+        x+=speed;
         fuel-=1;
     }
     public void moveFlatLeft(){
-        x-=3;
+        x-=speed;
         fuel-=1;
     }
     public void moveAngleUp() {
@@ -56,22 +57,42 @@ public class Tank {
 
     }
 
-    public void drawHp(Graphics g, int x){
-        g.setColor(Color.black);
-        g.drawRect(x-1, 399, 201, 61);
-        g.setColor(Color.RED);
-        g.fillRect(x, 400, 200, 60);
-        g.setColor(Color.green);
-        g.fillRect(x, 400, hp * 2, 60);
+    public void drawHp(Graphics g, int x, boolean player){
+        if(player) {
+            g.setColor(Color.black);
+            g.drawRect(x - 1, 399, hpwidth + 1, 61);
+            g.setColor(Color.RED);
+            g.fillRect(x, 400, hpwidth, 60);
+            g.setColor(Color.green);
+            g.fillRect(x, 400, hp * 2, 60);
+        }
+        else{
+            g.setColor(Color.black);
+            g.drawRect(941, 399, -hpwidth -3, 61);
+            g.setColor(Color.RED);
+            g.fillRect(940, 400, -hpwidth, 60);
+            g.setColor(Color.green);
+            g.fillRect(940, 400, -hp * 2, 60);
+        }
     }
 
-    public void drawFuel(Graphics g, int x){
-        g.setColor(Color.black);
-        g.drawRect(x-1, 464, 101, 16);
-        g.setColor(Color.darkGray);
-        g.fillRect(x, 465, 100, 15);
-        g.setColor(Color.orange);
-        g.fillRect(x, 465, fuel*10, 15);
+    public void drawFuel(Graphics g, int x, boolean player){
+        if(player) {
+            g.setColor(Color.black);
+            g.drawRect(x - 1, 464, 101, 16);
+            g.setColor(Color.darkGray);
+            g.fillRect(x, 465, 100, 15);
+            g.setColor(Color.orange);
+            g.fillRect(x, 465, fuel * 10, 15);
+        }
+        else{
+            g.setColor(Color.black);
+            g.drawRect(941, 464, -103, 16);
+            g.setColor(Color.darkGray);
+            g.fillRect(940, 465, -100, 15);
+            g.setColor(Color.orange);
+            g.fillRect(940, 465, -fuel * 10, 15);
+        }
     }
 
 
@@ -111,6 +132,11 @@ public class Tank {
     public void setFuel(int fuel){
         this.fuel = fuel;
     }
+
+    public int getPower(){
+        return power;
+    }
+
 
 
 }

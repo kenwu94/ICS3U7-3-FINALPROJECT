@@ -72,18 +72,15 @@ public class TankSelect extends JPanel implements ActionListener, KeyListener {
         if(player1pick) listIndex = 0;
         else listIndex = 1;
         if(e.getSource() == fastTank){
-            System.out.println(player1pick);
             hp[listIndex] = 75;
-            speed[listIndex] = 5;
-            power[listIndex] = 10;
+            speed[listIndex] = 8;
+            power[listIndex] = 1;
             if(!player1pick){
-                System.out.println("got here");
+                MyFrame.mp = new GamePanel();
+                MyFrame.cont.add(MyFrame.mp, "Game Panel");
                 MyFrame.lay.show(MyFrame.cont, "Game Panel");
                 MyFrame.mp.requestFocusInWindow();
                 MyFrame.mp.setFocusable(true);
-                for(int i = 0; i < 2; i++){
-                    System.out.println(hp[i] + " " + speed[i] + " " + power[i]);
-                }
             }
             player1pick = false;
 
@@ -92,15 +89,13 @@ public class TankSelect extends JPanel implements ActionListener, KeyListener {
         if(e.getSource() == heavyTank){
             hp[listIndex] = 100;
             speed[listIndex] = 2;
-            power[listIndex] = 15;
+            power[listIndex] = 2;
             if(!player1pick){
-                System.out.println("got here");
+                MyFrame.mp = new GamePanel();
+                MyFrame.cont.add(MyFrame.mp, "Game Panel");
                 MyFrame.lay.show(MyFrame.cont, "Game Panel");
                 MyFrame.mp.requestFocusInWindow();
                 MyFrame.mp.setFocusable(true);
-                for(int i = 0; i < 2; i++){
-                    System.out.println(hp[i] + " " + speed[i] + " " + power[i]);
-                }
             }
             player1pick = false;
         }
@@ -108,15 +103,13 @@ public class TankSelect extends JPanel implements ActionListener, KeyListener {
         if (e.getSource() == armoredTank) {
             hp[listIndex] = 150;
             speed[listIndex] = 2;
-            power[listIndex] = 10;
+            power[listIndex] = 1;
             if(!player1pick){
-                System.out.println("got here");
+                MyFrame.mp = new GamePanel();
+                MyFrame.cont.add(MyFrame.mp, "Game Panel");
                 MyFrame.lay.show(MyFrame.cont, "Game Panel");
                 MyFrame.mp.requestFocusInWindow();
                 MyFrame.mp.setFocusable(true);
-                for(int i = 0; i < 2; i++){
-                    System.out.println(hp[i] + " " + speed[i] + " " + power[i]);
-                }
             }
             player1pick = false;
         }

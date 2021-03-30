@@ -50,11 +50,11 @@ public class Laser extends JComponent {
     }
 
 
-    public void hitTarget(Tank x){
-        x.setHp(x.getHp() - damage);
+    public void hitTarget(Tank x, Tank2 y){
+        x.setHp(x.getHp() - damage * y.getPower());
     }
-    public void hitTarget(Tank2 x){
-        x.setHp(x.getHp() - damage);
+    public void hitTarget(Tank2 x, Tank y){
+        x.setHp(x.getHp() - damage * y.getPower());
     }
 
 }

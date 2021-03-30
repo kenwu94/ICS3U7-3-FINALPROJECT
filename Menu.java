@@ -52,8 +52,8 @@ public class Menu extends JPanel implements ActionListener {
         }
         else if(e.getSource() == play) {
             MyFrame.lay.show(MyFrame.cont, "Tank Selection");
-            MyFrame.mp.requestFocusInWindow();
-            MyFrame.mp.setFocusable(true);
+            MyFrame.ts.requestFocusInWindow();
+            MyFrame.ts.setFocusable(true);
 
         }
 
