@@ -13,6 +13,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     private Tank player1;
     private Tank2 player2;
     public static boolean player1turn;
+    Terrain[] terrain;
     Sprites sprites = new Sprites();
     Laser laser;
     Missile missile;
@@ -37,25 +38,24 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         back.setBackground(Color.cyan);
         back.addActionListener(this);
         back.setFocusable(false);
-
-        lbutton = new JButton();
+        
+        ImageIcon laser = new ImageIcon("buttons/button2.png");
+        lbutton = new JButton(laser);
         lbutton.setBounds(320, 400, 100, 40);
-        lbutton.setText("Laser");
         lbutton.setBackground(Color.cyan);
         lbutton.addActionListener(this);
         lbutton.setFocusable(false);
 
-
-        mbutton = new JButton();
+        ImageIcon missile = new ImageIcon("buttons/button1.png");
+        mbutton = new JButton(missile);
         mbutton.setBounds(430, 400, 100, 40);
-        mbutton.setText("Missile");
         mbutton.setBackground(Color.orange);
         mbutton.addActionListener(this);
         mbutton.setFocusable(false);
 
-        bbutton = new JButton();
+        ImageIcon bomb = new ImageIcon("buttons/button0.png");
+        bbutton = new JButton(bomb);
         bbutton.setBounds(540, 400, 100, 40);
-        bbutton.setText("Bomb");
         bbutton.setBackground(Color.LIGHT_GRAY);
         bbutton.addActionListener(this);
         bbutton.setFocusable(false);
@@ -76,20 +76,25 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         this.add(mbutton);
         this.add(bbutton);
         this.add(skipTurn);
-        player1 = new Tank(MyFrame.ts.getHp(0), MyFrame.ts.getSpeed(0), MyFrame.ts.getPower(0), 100, 300);
-        player2 = new Tank2(MyFrame.ts.getHp(1), MyFrame.ts.getSpeed(1), MyFrame.ts.getPower(1), 500, 300);
+        terrain = new Terrain[9];
+        terrain[0] = new Terrain(0,960,300,300);
+        
+        player1 = new Tank(MyFrame.ts.getHp(0), MyFrame.ts.getSpeed(0), MyFrame.ts.getPower(0), 100, 100,true);
+        player2 = new Tank2(MyFrame.ts.getHp(1), MyFrame.ts.getSpeed(1), MyFrame.ts.getPower(1), 500, 100,false);
         player1turn = true;
 
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        
         player1.myDraw(g);
         player1.drawHp(g, 5, true);
         player1.drawFuel(g, 5, true);
         player2.myDraw(g);
         player2.drawHp(g, 740, false);
         player2.drawFuel(g, 840, false);
+        terrain[0].myDraw(g);
 
         if(laser.shootLaser) {
             laser.draw(g);
@@ -137,7 +142,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             }
         }
 
-
+        repaint();
     }
 
 

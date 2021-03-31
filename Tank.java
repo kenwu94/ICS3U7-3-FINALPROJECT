@@ -9,15 +9,17 @@ public class Tank {
     double angle;
     int fuel;
     int hpwidth;
+    boolean isFacingRight;
 
     //constructor
-    public Tank(int hp, int speed, int power, int x, int y){
+    public Tank(int hp, int speed, int power, int x, int y,boolean isFacingRight){
         this.hp = hp;
         this.speed = speed;
         this.power = power;
         this.x = x;
         this.angle = 0;
         this.y = y;
+        this.isFacingRight = isFacingRight;
         fuel = 10;
         hpwidth = hp*2;
     }
@@ -54,6 +56,9 @@ public class Tank {
             angle-=10;
         }
 
+    }
+    public boolean getFacingRight() {
+    	return isFacingRight;
     }
 
     public void drawHp(Graphics g, int x, boolean player){
