@@ -14,7 +14,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     private Tank2 player2;
     public static boolean player1turn;
     Terrain[] terrain;
-    Sprites sprites = new Sprites();
     Laser laser;
     Missile missile;
     Bomb bomb;

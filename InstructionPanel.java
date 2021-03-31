@@ -12,7 +12,6 @@ import java.io.IOException;
 public class InstructionPanel extends JPanel implements ActionListener, KeyListener {
     private Timer timer;
     private JButton back, next;
-    private BufferedImage instructions;
 
     public InstructionPanel(){
 

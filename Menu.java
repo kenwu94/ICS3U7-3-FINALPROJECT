@@ -7,8 +7,10 @@ import javax.swing.*;
 public class Menu extends JPanel implements ActionListener {
     private JButton play, instructions, exit;
     private JLabel title;
+    Sprites sprites;
 
     public Menu() {
+    	sprites = new Sprites();
         this.setBackground(new Color(75, 87, 72));
 
         //title
