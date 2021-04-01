@@ -34,10 +34,8 @@ public class Laser extends JComponent {
         else x -= 20;
         if(x > 1000 || x < -50) {
             shootLaser = false;
-            GamePanel.player1turn = !GamePanel.player1turn;
-            GamePanel.canShoot = true;
             GamePanel.lselected = false;
-            GamePanel.canHit = true;
+            GamePanel.outofbounds = true;
         }
     }
 

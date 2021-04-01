@@ -10,7 +10,7 @@ public class Menu extends JPanel implements ActionListener {
     Sprites sprites;
 
     public Menu() {
-    	sprites = new Sprites();
+        sprites = new Sprites();
         this.setBackground(new Color(75, 87, 72));
 
         //title

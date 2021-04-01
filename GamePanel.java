@@ -20,6 +20,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     public static boolean canShoot = true;
     public static boolean lselected, mselected, bselected;
     public static boolean canHit = true;
+    public static boolean outofbounds = false;
     private int drawn = 0;
 
     public GamePanel(){
@@ -37,7 +38,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         back.setBackground(Color.cyan);
         back.addActionListener(this);
         back.setFocusable(false);
-        
+
         ImageIcon laser = new ImageIcon("buttons/button2.png");
         lbutton = new JButton(laser);
         lbutton.setBounds(320, 400, 100, 40);
@@ -77,7 +78,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         this.add(skipTurn);
         terrain = new Terrain[9];
         terrain[0] = new Terrain(0,960,300,300);
-        
+
         player1 = new Tank(MyFrame.ts.getHp(0), MyFrame.ts.getSpeed(0), MyFrame.ts.getPower(0), 100, 100,true);
         player2 = new Tank2(MyFrame.ts.getHp(1), MyFrame.ts.getSpeed(1), MyFrame.ts.getPower(1), 500, 100,false);
         player1turn = true;
@@ -86,7 +87,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        
+
         player1.myDraw(g);
         player1.drawHp(g, 5, true);
         player1.drawFuel(g, 5, true);
@@ -184,6 +185,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 repaint();
             }
             if(missile.shootMissile){
+                System.out.println(player1turn + " " + canShoot + " " + canHit);
                 if(player1turn) missile.shootProjectile(player1);
                 else missile.shootProjectile(player2);
                 repaint();

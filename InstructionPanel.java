@@ -69,5 +69,5 @@ public class InstructionPanel extends JPanel implements ActionListener, KeyListe
 
     }
 
-    
+
 }

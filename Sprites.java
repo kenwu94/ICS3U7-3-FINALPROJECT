@@ -27,7 +27,7 @@ public class Sprites {
         for(int i = 0; i<4 ;i++) {
             projectiles[i] = getImage("projectiles/projectile"+i+".png");
         }
-        
+
     }
 
     private BufferedImage getImage(String path){

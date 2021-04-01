@@ -44,11 +44,9 @@ public class Bomb {
         x = tank.getX()+ 50 + xcomponent * time;
         y = tank.getY() + 30 - (ycomponent * time - 0.5 * 0.98 * Math.pow(time, 2));
         if(y > 600){
-            GamePanel.player1turn = !GamePanel.player1turn;
-            GamePanel.canShoot = true;
             shootBomb = false;
             GamePanel.bselected = false;
-            GamePanel.canHit = true;
+            GamePanel.outofbounds = true;
         }
     }
 
@@ -62,11 +60,9 @@ public class Bomb {
         x = tank.getX() - (xcomponent * time);
         y = tank.getY() + 30 - (ycomponent * (time) - 0.5 * 0.98 * Math.pow(time, 2));
         if(y > 600){
-            GamePanel.player1turn = !GamePanel.player1turn;
-            GamePanel.canShoot = true;
             shootBomb = false;
             GamePanel.bselected = false;
-            GamePanel.canHit = true;
+            GamePanel.outofbounds = true;
         }
     }
 

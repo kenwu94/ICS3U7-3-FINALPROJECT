@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
@@ -10,6 +11,7 @@ public class Tank {
     int fuel;
     int hpwidth;
     boolean isFacingRight;
+    private JLabel hplabel;
 
     //constructor
     public Tank(int hp, int speed, int power, int x, int y,boolean isFacingRight){
@@ -35,6 +37,12 @@ public class Tank {
             MyFrame.cont.add(end, "End Panel");
             MyFrame.lay.show(MyFrame.cont, "End Panel");
         }
+        if(fuel == 0 && !GamePanel.canShoot && !GamePanel.canHit && GamePanel.outofbounds){
+            GamePanel.player1turn = !GamePanel.player1turn;
+            GamePanel.canShoot = true;
+            GamePanel.canHit = true;
+            GamePanel.outofbounds =false;
+        }
     }
 
     //method for the tank to move on flat ground
@@ -58,7 +66,7 @@ public class Tank {
 
     }
     public boolean getFacingRight() {
-    	return isFacingRight;
+        return isFacingRight;
     }
 
     public void drawHp(Graphics g, int x, boolean player){
