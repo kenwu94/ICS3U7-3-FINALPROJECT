@@ -38,10 +38,12 @@ public class Tank {
             MyFrame.lay.show(MyFrame.cont, "End Panel");
         }
         if(fuel == 0 && !GamePanel.canShoot && !GamePanel.canHit && GamePanel.outofbounds){
+
             GamePanel.player1turn = !GamePanel.player1turn;
             GamePanel.canShoot = true;
             GamePanel.canHit = true;
             GamePanel.outofbounds =false;
+
         }
     }
 

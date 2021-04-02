@@ -185,7 +185,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 repaint();
             }
             if(missile.shootMissile){
-                System.out.println(player1turn + " " + canShoot + " " + canHit);
                 if(player1turn) missile.shootProjectile(player1);
                 else missile.shootProjectile(player2);
                 repaint();
