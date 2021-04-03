@@ -17,10 +17,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     Laser laser;
     Missile missile;
     Bomb bomb;
-    public static boolean canShoot = true;
+    public static boolean canShoot;
     public static boolean lselected, mselected, bselected;
-    public static boolean canHit = true;
-    public static boolean outofbounds = false;
+    public static boolean canHit;
+    public static boolean outofbounds;
     private int drawn = 0;
 
     public GamePanel(){
@@ -28,6 +28,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         this.addKeyListener(this);
         this.setFocusable(true);
         this.requestFocusInWindow();
+
+        canShoot = true;
+        canHit = true;
+        outofbounds = false;
 
         timer = new Timer(5, this);
         timer.start();
@@ -183,19 +187,23 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
         if(e.getSource()==timer) {
             //make each ball move towards the mouse when it is clicked
-            if(laser.shootLaser) {
-                laser.shoot();
-                repaint();
+            try {
+                if (laser.shootLaser) {
+                    laser.shoot();
+                    repaint();
+                }
+                if (missile.shootMissile) {
+                    if (player1turn) missile.shootProjectile(player1);
+                    else missile.shootProjectile(player2);
+                    repaint();
+                }
+                if (bomb.shootBomb) {
+                    if (player1turn) bomb.shootProjectile(player1);
+                    else bomb.shootProjectile(player2);
+                    repaint();
+                }
             }
-            if(missile.shootMissile){
-                if(player1turn) missile.shootProjectile(player1);
-                else missile.shootProjectile(player2);
-                repaint();
-            }
-            if(bomb.shootBomb){
-                if(player1turn) bomb.shootProjectile(player1);
-                else bomb.shootProjectile(player2);
-                repaint();
+            catch(Exception ee){
             }
         }
 
