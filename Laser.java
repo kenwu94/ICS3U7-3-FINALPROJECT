@@ -36,6 +36,7 @@ public class Laser extends JComponent {
             shootLaser = false;
             GamePanel.lselected = false;
             GamePanel.outofbounds = true;
+            GamePanel.canHit = false;
         }
     }
 

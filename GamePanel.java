@@ -154,6 +154,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             player2.setFuel(10);
             player1.setFuel(10);
             player1turn = !player1turn;
+            canShoot = true;
+            canHit = true;
+            outofbounds = false;
             repaint();
         }
         if(e.getSource() == lbutton && canShoot){

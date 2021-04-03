@@ -52,6 +52,7 @@ public class Missile {
             shootMissile = false;
             GamePanel.mselected = false;
             GamePanel.outofbounds = true;
+            GamePanel.canHit = false;
         }
     }
 
@@ -68,6 +69,7 @@ public class Missile {
             shootMissile = false;
             GamePanel.mselected = false;
             GamePanel.outofbounds = true;
+            GamePanel.canHit = false;
         }
     }
 

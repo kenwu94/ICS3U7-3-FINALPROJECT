@@ -47,6 +47,7 @@ public class Bomb {
             shootBomb = false;
             GamePanel.bselected = false;
             GamePanel.outofbounds = true;
+            GamePanel.canHit = false;
         }
     }
 
@@ -63,6 +64,7 @@ public class Bomb {
             shootBomb = false;
             GamePanel.bselected = false;
             GamePanel.outofbounds = true;
+            GamePanel.canHit = false;
         }
     }
 
