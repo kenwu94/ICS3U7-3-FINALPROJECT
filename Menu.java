@@ -8,8 +8,10 @@ public class Menu extends JPanel implements ActionListener {
     private JButton play, instructions, exit;
     private JLabel title;
     Sprites sprites;
+    public static TankSelect ts;
 
     public Menu() {
+
         sprites = new Sprites();
         this.setBackground(new Color(75, 87, 72));
 
@@ -53,10 +55,11 @@ public class Menu extends JPanel implements ActionListener {
             System.exit(0);
         }
         else if(e.getSource() == play) {
+            ts = new TankSelect();
+            MyFrame.cont.add(ts, "Tank Selection");
             MyFrame.lay.show(MyFrame.cont, "Tank Selection");
-            MyFrame.ts.requestFocusInWindow();
-            MyFrame.ts.setFocusable(true);
-
+            ts.requestFocusInWindow();
+            ts.setFocusable(true);
         }
 
         else if (e.getSource() == instructions) {

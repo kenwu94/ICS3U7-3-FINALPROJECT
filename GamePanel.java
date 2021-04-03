@@ -83,8 +83,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         terrain = new Terrain[9];
         terrain[0] = new Terrain(0,960,300,300);
 
-        player1 = new Tank(MyFrame.ts.getHp(0), MyFrame.ts.getSpeed(0), MyFrame.ts.getPower(0), 100, 100,true);
-        player2 = new Tank2(MyFrame.ts.getHp(1), MyFrame.ts.getSpeed(1), MyFrame.ts.getPower(1), 500, 100,false);
+        player1 = new Tank(Menu.ts.getHp(0), Menu.ts.getSpeed(0), Menu.ts.getPower(0), 100, 100,true);
+        player2 = new Tank2(Menu.ts.getHp(1), Menu.ts.getSpeed(1), Menu.ts.getPower(1), 500, 100,false);
         player1turn = true;
 
     }
