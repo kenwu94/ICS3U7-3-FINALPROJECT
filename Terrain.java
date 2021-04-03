@@ -41,6 +41,9 @@ public class Terrain {
         }
         return isUp;
     }
+    public boolean isInTerrain(Tank t) {
+    	return t.getX()>=x1 && t.getX()<=x2;
+    }
 
     public boolean isSlope() {
         return isSlope;
