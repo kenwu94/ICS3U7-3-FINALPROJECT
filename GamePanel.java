@@ -90,9 +90,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         terrain[6] = new Terrain(639,788,370,370);
         terrain[7] = new Terrain(789,859,370,300);
         terrain[8] = new Terrain(860,960,300,300);
-        for(int i = 0;i<9;i++) {
-    		//System.out.println(terrain[i].isSlope()+" "+terrain[i].getSlope());
-    	}
+
 
         player1 = new Tank(Menu.ts.getHp(0), Menu.ts.getSpeed(0), Menu.ts.getPower(0), 50, 310,true);
         player2 = new Tank2(Menu.ts.getHp(1), Menu.ts.getSpeed(1), Menu.ts.getPower(1), 860, 310,false);
@@ -102,7 +100,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
+        
+        int indexTerrain1 = 0;
+        int indexTerrain2 = 0;
+    	for(int i = 0;i<9;i++) {
+    		if(terrain[i].isInTerrain(player1)) {
+    			indexTerrain1 = i;
+    		}
+    		if(terrain[i].isInTerrain(player2)) {
+    			indexTerrain2 = i;
+    		}
+    	}
+    	player1.setY(terrain[indexTerrain1]);
+    	player2.setY(terrain[indexTerrain2]);
+    	
         player1.myDraw(g);
         player1.drawHp(g, 5, true);
         player1.drawFuel(g, 5, true);
@@ -227,25 +238,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     }
 
     public void keyPressed(KeyEvent e) {
-    	/*for(int i = 0;i<9;i++) {
-    		if(terrain[i].isInTerrain(player1)) {
-    			System.out.println(i);
-    			if(terrain[i].isSlope()) {
-    				System.out.println(terrain[i].getDirection(player1, terrain[i].getSlope()));
-    			}
-    		}
-    		
-    	}*/
-    	for(int i = 0;i<9;i++) {
-    		if(terrain[i].isInTerrain(player2)) {
-    			System.out.println(i);
-    			if(terrain[i].isSlope()) {
-    				System.out.println(terrain[i].getDirection(player2, terrain[i].getSlope()));
-    			}
-    		}
-    		
-    	}
-    	
         if(player1turn) {
             player2.setFuel(10);
             if(e.getKeyCode()== e.VK_A) {
@@ -260,7 +252,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             if(e.getKeyCode()== e.VK_S) {
                 if(!lselected) player1.moveAngleDown();
             }
-
+      
             if(e.getKeyCode() == e.VK_E){
                 if(lselected && canShoot){
                     laser = new Laser(player1.getX(), player1.getY(), player1turn);

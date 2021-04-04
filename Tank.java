@@ -135,6 +135,9 @@ public class Tank {
     public int getY(){
         return y;
     }
+    public void setY(Terrain t) {
+    	y = t.getY(this)-60;
+    }
     public double getAngle() {
         return angle;
     }

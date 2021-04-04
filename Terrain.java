@@ -17,11 +17,19 @@ public class Terrain {
     }
     public void myDraw(Graphics g) {
         g.setColor(Color.black);
-        g.drawLine(x1, y1, x2, y2);
+        g.drawLine(0, 300, 30, 300);
+        g.drawLine(x1+30, y1, x2+30, y2);
     }
-    public int getY(Tank t,int x) {
-        int y = 0;
-        return y;
+    public int getY(Tank t) {
+        if(isSlope) {
+        	if(slope>0) {
+        		return y1-(x1-t.getX());
+        	}else {
+        		return y1+(x1-t.getX());
+        	}
+        }else {
+        	return y1;
+        }
     }
     public boolean getDirection(Tank t,int slope) {
     	boolean isRight = t.getFacingRight();
