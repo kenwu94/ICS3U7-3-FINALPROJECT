@@ -2,7 +2,6 @@ import java.awt.*;
 public class Terrain {
     private int x1,x2,y1,y2,slope;
     private boolean isSlope;
-    private boolean isDown,isUp;
     public Terrain(int x1,int x2,int y1,int y2) {
         this.x1 = x1;
         this.x2 = x2;
@@ -13,7 +12,8 @@ public class Terrain {
         }else {
             isSlope = true;
         }
-        slope = getSlope();
+        slope = (y2-y1)/(x2-x1);
+        
     }
     public void myDraw(Graphics g) {
         g.setColor(Color.black);
@@ -23,24 +23,20 @@ public class Terrain {
         int y = 0;
         return y;
     }
-    public boolean getIsDown(Tank t) {
-        boolean isRight = t.getFacingRight();
-        if(isRight||slope<0) {
-            isDown = true;
-        }else {
-            isDown = false;
-        }
-        return isDown;
+    public boolean getDirection(Tank t,int slope) {
+    	boolean isRight = t.getFacingRight();
+    	boolean positiveSlope = slope<0;
+    	System.out.println(isRight+" "+positiveSlope);
+    	if(!positiveSlope&&!isRight) {
+    		return true;
+    	}else {
+    		return isRight&&positiveSlope;
+    	}
+    	
     }
-    public boolean getIsUp(Tank t) {
-        boolean isRight = t.getFacingRight();
-        if(isRight||slope>0) {
-            isUp = true;
-        }else {
-            isUp = false;
-        }
-        return isUp;
-    }
+    
+    
+    
     public boolean isInTerrain(Tank t) {
     	return t.getX()>=x1 && t.getX()<=x2;
     }
@@ -49,8 +45,6 @@ public class Terrain {
         return isSlope;
     }
     public int getSlope() {
-        int slopeCalc;
-        slopeCalc = (y2-y1)/(x2-x1);
-        return slopeCalc;
+        return slope;
     }
 }

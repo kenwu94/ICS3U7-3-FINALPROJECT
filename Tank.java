@@ -28,7 +28,7 @@ public class Tank {
 
     //draws the tank
     public void myDraw(Graphics g){
-        System.out.println(GamePanel.player1turn + " " + (fuel == 0) + " " + GamePanel.canShoot + " " + GamePanel.canHit + " " +GamePanel.outofbounds);
+       // System.out.println(GamePanel.player1turn + " " + (fuel == 0) + " " + GamePanel.canShoot + " " + GamePanel.canHit + " " +GamePanel.outofbounds);
         int index = (int) angle;
         index = (index + 10) / 10;
         g.drawImage(Sprites.tank1[index], x + 23, y + 18, null);

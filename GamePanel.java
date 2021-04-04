@@ -81,10 +81,21 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         this.add(bbutton);
         this.add(skipTurn);
         terrain = new Terrain[9];
-        terrain[0] = new Terrain(0,960,300,300);
+        terrain[0] = new Terrain(0,80,300,300);
+        terrain[1] = new Terrain(81,151,300,370);
+        terrain[2] = new Terrain(152,302,370,370);
+        terrain[3] = new Terrain(303,403,370,270);
+        terrain[4] = new Terrain(404,537,270,270);
+        terrain[5] = new Terrain(538,638,270,370);
+        terrain[6] = new Terrain(639,788,370,370);
+        terrain[7] = new Terrain(789,859,370,300);
+        terrain[8] = new Terrain(860,960,300,300);
+        for(int i = 0;i<9;i++) {
+    		//System.out.println(terrain[i].isSlope()+" "+terrain[i].getSlope());
+    	}
 
-        player1 = new Tank(Menu.ts.getHp(0), Menu.ts.getSpeed(0), Menu.ts.getPower(0), 100, 100,true);
-        player2 = new Tank2(Menu.ts.getHp(1), Menu.ts.getSpeed(1), Menu.ts.getPower(1), 500, 100,false);
+        player1 = new Tank(Menu.ts.getHp(0), Menu.ts.getSpeed(0), Menu.ts.getPower(0), 50, 310,true);
+        player2 = new Tank2(Menu.ts.getHp(1), Menu.ts.getSpeed(1), Menu.ts.getPower(1), 860, 310,false);
         player1turn = true;
 
     }
@@ -98,7 +109,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         player2.myDraw(g);
         player2.drawHp(g, 740, false);
         player2.drawFuel(g, 840, false);
-        terrain[0].myDraw(g);
+        for(int i = 0;i<9;i++) {
+            terrain[i].myDraw(g);
+        }
 
         if(laser.shootLaser) {
             laser.draw(g);
@@ -214,6 +227,25 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     }
 
     public void keyPressed(KeyEvent e) {
+    	/*for(int i = 0;i<9;i++) {
+    		if(terrain[i].isInTerrain(player1)) {
+    			System.out.println(i);
+    			if(terrain[i].isSlope()) {
+    				System.out.println(terrain[i].getDirection(player1, terrain[i].getSlope()));
+    			}
+    		}
+    		
+    	}*/
+    	for(int i = 0;i<9;i++) {
+    		if(terrain[i].isInTerrain(player2)) {
+    			System.out.println(i);
+    			if(terrain[i].isSlope()) {
+    				System.out.println(terrain[i].getDirection(player2, terrain[i].getSlope()));
+    			}
+    		}
+    		
+    	}
+    	
         if(player1turn) {
             player2.setFuel(10);
             if(e.getKeyCode()== e.VK_A) {
