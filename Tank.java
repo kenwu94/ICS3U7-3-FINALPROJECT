@@ -107,9 +107,10 @@ public class Tank {
             g.setColor(Color.black);
             g.drawRect(941, 399, -hpwidth -3, 61);
             g.setColor(Color.RED);
-            g.fillRect(940, 400, -hpwidth, 60);
+            g.fillRect(940 - hpwidth, 400, hpwidth, 60);
             g.setColor(Color.green);
-            g.fillRect(940, 400, -hp * 2, 60);
+            g.fillRect(940 - hpwidth, 400, hp * 2, 60);
+            //g.fillRect(0,0, 500, 500);
         }
     }
 
@@ -124,11 +125,11 @@ public class Tank {
         }
         else{
             g.setColor(Color.black);
-            g.drawRect(941, 464, -103, 16);
+            g.drawRect(941 - 103, 464, 103, 16);
             g.setColor(Color.darkGray);
-            g.fillRect(940, 465, -100, 15);
+            g.fillRect(940 - 100, 465, 100, 15);
             g.setColor(Color.orange);
-            g.fillRect(940, 465, -fuel * 10, 15);
+            g.fillRect(940 - fuel * 10, 465, fuel * 10, 15);
         }
     }
 
