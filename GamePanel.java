@@ -111,6 +111,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     			indexTerrain2 = i;
     		}
     	}
+    	g.drawImage(Sprites.gameBackG, 0, 0, null);
+    	g.drawImage(Sprites.terrain,0,0,null);
     	player1.setY(terrain[indexTerrain1]);
     	player1.setTankImage(terrain[indexTerrain1]);
     	player2.setY(terrain[indexTerrain2]);
@@ -122,9 +124,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         player2.myDraw(g);
         player2.drawHp(g, 740, false);
         player2.drawFuel(g, 840, false);
-        for(int i = 0;i<9;i++) {
+        /*for(int i = 0;i<9;i++) {
             terrain[i].myDraw(g);
-        }
+        }*/
 
         if(laser.shootLaser) {
             laser.draw(g);
