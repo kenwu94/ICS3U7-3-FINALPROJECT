@@ -34,7 +34,6 @@ public class Terrain {
     public boolean getDirection(Tank t,int slope) {
     	boolean isRight = t.getFacingRight();
     	boolean positiveSlope = slope<0;
-    	System.out.println(isRight+" "+positiveSlope);
     	if(!positiveSlope&&!isRight) {
     		return true;
     	}else {

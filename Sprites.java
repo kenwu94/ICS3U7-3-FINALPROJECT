@@ -9,9 +9,13 @@ public class Sprites {
     private String path;
 
     public Sprites() {
-        tank1 = new BufferedImage[10];
+        tank1 = new BufferedImage[12];
         tank1[0] = getImage("images/tank2.png");
-        tank2 = new BufferedImage[10];
+        tank1[10] = getImage("images/tilted_tank1.png");
+        tank1[11] = getImage("images/tilted_tank3.png");
+        tank2 = new BufferedImage[12];
+        tank2[10] = getImage("images/tilted_tank0.png");
+        tank2[11] = getImage("images/tilted_tank2.png");
         tank2[0] = getImage("images/tank0.png");
         instructions = getImage("images/instructions.png");
         controls = getImage("images/controls.png");

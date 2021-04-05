@@ -12,6 +12,8 @@ public class Tank {
     int hpwidth;
     boolean isFacingRight;
     private JLabel hplabel;
+    private BufferedImage tankImage;
+    private int turretY,turretX;
 
     //constructor
     public Tank(int hp, int speed, int power, int x, int y,boolean isFacingRight){
@@ -31,8 +33,9 @@ public class Tank {
        // System.out.println(GamePanel.player1turn + " " + (fuel == 0) + " " + GamePanel.canShoot + " " + GamePanel.canHit + " " +GamePanel.outofbounds);
         int index = (int) angle;
         index = (index + 10) / 10;
-        g.drawImage(Sprites.tank1[index], x + 23, y + 18, null);
-        g.drawImage(Sprites.tank1[0], x, y, null);
+        g.drawImage(tankImage, x, y, null);
+        g.drawImage(Sprites.tank1[index], turretX, turretY, null);
+        
         if (hp <= 0) {
             EndPanel end = new EndPanel("Player 2");
             MyFrame.cont.add(end, "End Panel");
@@ -46,6 +49,25 @@ public class Tank {
             GamePanel.outofbounds =false;
 
         }
+    }
+    public void setTankImage(Terrain t) {
+    	boolean direction = t.getDirection(this, t.getSlope());
+    	boolean isSlope = t.isSlope();
+    	if(isSlope) {
+    		if(direction) {
+    			tankImage = Sprites.tank1[11];
+    			turretY = y+6;
+    			turretX = x+14;
+    		}else {
+    			tankImage = Sprites.tank1[10];
+    			turretY = y+8;
+    			turretX = x+26;
+    		}
+    	}else{
+    		tankImage = Sprites.tank1[0];
+    		turretY = y+18;
+    		turretX = x+23;
+    	}
     }
 
     //method for the tank to move on flat ground

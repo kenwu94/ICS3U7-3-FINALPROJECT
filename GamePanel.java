@@ -112,7 +112,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     		}
     	}
     	player1.setY(terrain[indexTerrain1]);
+    	player1.setTankImage(terrain[indexTerrain1]);
     	player2.setY(terrain[indexTerrain2]);
+    	player2.setTankImage(terrain[indexTerrain2]);
     	
         player1.myDraw(g);
         player1.drawHp(g, 5, true);
