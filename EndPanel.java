@@ -25,20 +25,16 @@ public class EndPanel extends JPanel implements ActionListener, KeyListener {
 
         timer = new Timer(5, this);
         timer.start();
-
-        title = new JLabel();
-        title.setText(winner + " wins!");
-        title.setLocation(50, 50);
-        title.setSize(400, 100);
+        
 
         back = new JButton();
-        back.setBounds(410, 255, 140, 30);
+        back.setBounds(710, 255, 140, 30);
         back.setText("BACK TO MENU");
         back.setBackground(Color.cyan);
         back.addActionListener(this);
 
         again = new JButton();
-        again.setBounds(410, 310, 140, 30);
+        again.setBounds(710, 310, 140, 30);
         again.setText("PLAY AGAIN");
         again.setBackground(Color.YELLOW);
         again.addActionListener(this);
@@ -48,7 +44,7 @@ public class EndPanel extends JPanel implements ActionListener, KeyListener {
 
         this.add(back);
         this.add(again);
-        this.add(title);
+
         TankSelect newTs = new TankSelect();
 
         MyFrame.cont.add(newTs, "New Tank Selection");
@@ -67,6 +63,11 @@ public class EndPanel extends JPanel implements ActionListener, KeyListener {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        if(winner.equals("Player 1")) {
+        	g.drawImage(Sprites.winBackG[0],0,0,null);
+        }else {
+        	g.drawImage(Sprites.winBackG[1],0,0,null);
+        }
     }
 
     public void keyTyped(KeyEvent e) {

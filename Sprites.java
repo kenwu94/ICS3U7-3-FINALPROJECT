@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class Sprites {
-    public static BufferedImage[] tank1, tank2,projectiles,tankSelectBG;
+    public static BufferedImage[] tank1, tank2,projectiles,tankSelectBG,winBackG;
     public static BufferedImage instructions,controls,menu,gameBackG,terrain;
     private String path;
 
@@ -26,6 +26,9 @@ public class Sprites {
         tankSelectBG[0] = getImage("images/player1pick.png");
         tankSelectBG[1] = getImage("images/player2pick.png");
         terrain =  getImage("images/terrain.png");
+        winBackG = new BufferedImage[2];
+        winBackG[0]= getImage("images/player1win.png");
+        winBackG[1]= getImage("images/player2win.png");
         for(int i = 1;i<10;i++) {
             int index = 10*(i-1);
             tank1[i] = getImage("turret1/"+"degree"+index+".png");
