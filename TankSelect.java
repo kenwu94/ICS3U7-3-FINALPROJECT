@@ -26,30 +26,22 @@ public class TankSelect extends JPanel implements ActionListener, KeyListener {
         setFocusable(true);
         this.requestFocusInWindow();
 
-        player1picking = new JLabel();
-        player1picking.setText("Player 1 is Picking...");
-        player1picking.setLocation(50, 50);
-        player1picking.setSize(400, 100);
 
-        player2picking = new JLabel();
-        player2picking.setText("Player 2 is Picking...");
-        player2picking.setLocation(50, 50);
-        player2picking.setSize(400, 100);
 
         fastTank = new JButton();
-        fastTank.setBounds(180, 240, 140, 60);
+        fastTank.setBounds(250, 240, 140, 60);
         fastTank.setText("Fast Tank");
         fastTank.setBackground(Color.cyan);
         fastTank.addActionListener(this);
 
         heavyTank = new JButton();
-        heavyTank.setBounds(330, 240, 140, 60);
+        heavyTank.setBounds(400, 240, 140, 60);
         heavyTank.setText("Heavy Tank");
         heavyTank.setBackground(Color.cyan);
         heavyTank.addActionListener(this);
 
         armoredTank = new JButton();
-        armoredTank.setBounds(480, 240, 140, 60);
+        armoredTank.setBounds(550, 240, 140, 60);
         armoredTank.setText("Armored Tank");
         armoredTank.setBackground(Color.cyan);
         armoredTank.addActionListener(this);
@@ -65,11 +57,7 @@ public class TankSelect extends JPanel implements ActionListener, KeyListener {
 
 
     public void actionPerformed(ActionEvent e) {
-        if(player1pick) this.add(player1picking);
-        else{
-            this.add(player2picking);
-
-        }
+        
         repaint();
         if(player1pick) listIndex = 0;
         else listIndex = 1;
@@ -117,7 +105,12 @@ public class TankSelect extends JPanel implements ActionListener, KeyListener {
         }
     }
 
-
+    public void paintComponent(Graphics g) {
+    	g.drawImage(Sprites.tankSelectBG[0],0,0,null);
+    	if(!player1pick) {
+    		g.drawImage(Sprites.tankSelectBG[1],0,0,null);
+    	}
+    }
     public void keyTyped(KeyEvent e) {
 
     }

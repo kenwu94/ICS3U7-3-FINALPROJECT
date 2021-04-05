@@ -13,6 +13,9 @@ public class MyFrame extends JFrame{
         cont = this.getContentPane();
         lay = new CardLayout();
         cont.setLayout(lay);
+        
+        ImageIcon ii = new ImageIcon("images/icon.png");
+        this.setIconImage(ii.getImage());
 
         Menu m = new Menu();
         InstructionPanel instr = new InstructionPanel();

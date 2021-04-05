@@ -6,21 +6,14 @@ import javax.swing.*;
 
 public class Menu extends JPanel implements ActionListener {
     private JButton play, instructions, exit;
-    private JLabel title;
+    private JLabel menuBackG;
     Sprites sprites;
     public static TankSelect ts;
 
     public Menu() {
-
+    	
         sprites = new Sprites();
-        this.setBackground(new Color(75, 87, 72));
-
-        //title
-        title = new JLabel();
-        title.setText("final project title");
-        title.setLocation(50, 50);
-        title.setSize(400, 100);
-
+        
         //play button
         play = new JButton();
         play.setBounds(380, 155, 200, 60);
@@ -41,8 +34,7 @@ public class Menu extends JPanel implements ActionListener {
         exit.setText("Exit");
         exit.setBackground(Color.red);
         exit.addActionListener(this);
-
-        this.add(title);
+        
         this.add(play);
         this.add(instructions);
         this.add(exit);
@@ -65,6 +57,9 @@ public class Menu extends JPanel implements ActionListener {
         else if (e.getSource() == instructions) {
             MyFrame.lay.show(MyFrame.cont, "Instructions");
         }
+    }
+    public void paintComponent(Graphics g) {
+    	g.drawImage(Sprites.menu,0,0,null);
     }
 
 }
