@@ -111,8 +111,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     			indexTerrain2 = i;
     		}
     	}
+    	
     	g.drawImage(Sprites.gameBackG, 0, 0, null);
     	g.drawImage(Sprites.terrain,0,0,null);
+    	Font font = new Font("Courier",Font.BOLD,15);
+    	g.setFont(font);
+    	g.setColor(Color.WHITE);
+    	if(player1turn) {
+    		g.drawString("Player 1 turn",430 , 360);
+    	}else {
+    		g.drawString("Player 2 turn",430 , 360);
+    	}
     	player1.setY(terrain[indexTerrain1]);
     	player1.setTankImage(terrain[indexTerrain1]);
     	player2.setY(terrain[indexTerrain2]);
