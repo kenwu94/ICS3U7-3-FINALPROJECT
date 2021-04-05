@@ -136,15 +136,7 @@ public class Tank {
             g.fillRect(940 - fuel * 10, 465, fuel * 10, 15);
         }
     }
-
-
-    //method for the tank to move on non-flat ground
-    public void moveTerrain(){}
-
-
-    //method for the tank to shoot
-    public void shoot(int power, int angle, Projectile x){}
-
+    
     //getter for hp
     public int getHp(){
         return hp;
