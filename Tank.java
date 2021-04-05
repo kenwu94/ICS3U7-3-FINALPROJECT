@@ -72,12 +72,16 @@ public class Tank {
 
     //method for the tank to move on flat ground
     public void moveFlatRight(){
+    	if(x<900) {
         x+=speed;
         fuel-=1;
+    	}
     }
     public void moveFlatLeft(){
-        x-=speed;
+    	if(x>0) {
+    	x-=speed;
         fuel-=1;
+    	}
     }
     public void moveAngleUp() {
         if(angle<80) {
