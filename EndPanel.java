@@ -62,7 +62,7 @@ public class EndPanel extends JPanel implements ActionListener, KeyListener {
     
     //method that handles button presses
     public void actionPerformed(ActionEvent e) {
-        //move through panels in CardLayout
+        //move through panels in CardLayout depending on which button is pressed
         if (e.getSource() == back) {
             MyFrame.lay.show(MyFrame.cont, "Menu Panel");
         }
