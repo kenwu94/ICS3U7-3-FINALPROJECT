@@ -1,3 +1,11 @@
+/*
+Authors: Eric Y, Ken W
+Date: April 6 2021
+ICS 3U7 Ms S
+Class description: Class for the panel that controls how the game runs
+*/
+
+//imports
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,6 +15,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
+    //variables
     public static long startTime;
     private JButton back, bbutton, lbutton, mbutton, skipTurn;
     private Timer timer;
@@ -22,13 +31,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     public static boolean canHit;
     public static boolean outofbounds;
     private int drawn = 0;
-
+    
+    
+    //constructor
     public GamePanel(){
+        //set up panel
         setBackground(Color.white);
         this.addKeyListener(this);
         this.setFocusable(true);
         this.requestFocusInWindow();
 
+        //initialize variables
         canShoot = true;
         canHit = true;
         outofbounds = false;
@@ -36,6 +49,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         timer = new Timer(5, this);
         timer.start();
 
+        //set up buttons
         back = new JButton();
         back.setBounds(0, 0, 80, 30);
         back.setText("BACK");
@@ -80,6 +94,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         this.add(mbutton);
         this.add(bbutton);
         this.add(skipTurn);
+        
+        //initialize terrain
         terrain = new Terrain[9];
         terrain[0] = new Terrain(0,80,300,300);
         terrain[1] = new Terrain(81,151,300,370);
@@ -91,16 +107,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         terrain[7] = new Terrain(789,859,370,300);
         terrain[8] = new Terrain(860,960,300,300);
 
-
+        //initialize tanks
         player1 = new Tank(Menu.ts.getHp(0), Menu.ts.getSpeed(0), Menu.ts.getPower(0), 50, 310,true);
         player2 = new Tank2(Menu.ts.getHp(1), Menu.ts.getSpeed(1), Menu.ts.getPower(1), 860, 310,false);
         player1turn = true;
 
     }
-
+    
+    //method for displaying the sprites
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        
+        //get the terrain that the tank is currently in
         int indexTerrain1 = 0;
         int indexTerrain2 = 0;
     	for(int i = 0;i<9;i++) {
@@ -111,9 +128,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     			indexTerrain2 = i;
     		}
     	}
-    	
+    	//draw the background and terrain of the game
     	g.drawImage(Sprites.gameBackG, 0, 0, null);
     	g.drawImage(Sprites.terrain,0,0,null);
+        //display which players turn it is
     	Font font = new Font("Courier",Font.BOLD,15);
     	g.setFont(font);
     	g.setColor(Color.WHITE);
@@ -122,21 +140,22 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     	}else {
     		g.drawString("Player 2 turn",430 , 360);
     	}
+        
+        //set the y position and direction of the tank
     	player1.setY(terrain[indexTerrain1]);
     	player1.setTankImage(terrain[indexTerrain1]);
     	player2.setY(terrain[indexTerrain2]);
     	player2.setTankImage(terrain[indexTerrain2]);
     	
+        //draw the tanks with corresponding fuel and hp bars
         player1.myDraw(g);
         player1.drawHp(g, 5, true);
         player1.drawFuel(g, 5, true);
         player2.myDraw(g);
         player2.drawHp(g, 740, false);
         player2.drawFuel(g, 840, false);
-        /*for(int i = 0;i<9;i++) {
-            terrain[i].myDraw(g);
-        }*/
 
+        
         if(laser.shootLaser) {
             laser.draw(g);
             if(player1turn) {
@@ -186,7 +205,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         repaint();
     }
 
-
+    //method that handles button presses
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == back){
             MyFrame.lay.show(MyFrame.cont, "Menu Panel");
