@@ -2,7 +2,7 @@
 Authors: Eric Y, Ken W
 Date: April 6 2021
 ICS 3U7 Ms S
-Class description: Class the panel that displays the controls
+Class description: Class for the panel that displays the controls
 */
 
 //imports
