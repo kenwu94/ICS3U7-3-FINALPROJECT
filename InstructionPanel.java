@@ -1,3 +1,11 @@
+/*
+Authors: Eric Y, Ken W
+Date: April 6 2021
+ICS 3U7 Ms S
+Class description: Class for the panel that displays the instructions
+*/
+
+//imports
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -10,20 +18,23 @@ import java.io.File;
 import java.io.IOException;
 
 public class InstructionPanel extends JPanel implements ActionListener, KeyListener {
+    //variables
     private Timer timer;
     private JButton back, next;
 
+    //constructor
     public InstructionPanel(){
 
+        //set up panel
         setBackground(Color.white);
-
         addKeyListener((KeyListener) this);
         setFocusable(true);
         this.requestFocusInWindow();
-
+        //initialize timer
         timer = new Timer(5, this);
         timer.start();
 
+        //initialize, set up buttons
         back = new JButton();
         back.setBounds(0, 0, 80, 30);
         back.setText("BACK");
@@ -37,12 +48,12 @@ public class InstructionPanel extends JPanel implements ActionListener, KeyListe
         next.addActionListener(this);
 
         this.setLayout(null);
-
         this.add(back);
         this.add(next);
     }
-
+    //method that handles button presses
     public void actionPerformed(ActionEvent e) {
+        //switch panels in cardlayout depending on which button is pressed
         if(e.getSource() == back){
             MyFrame.lay.show(MyFrame.cont, "Menu Panel");
         }
@@ -51,7 +62,7 @@ public class InstructionPanel extends JPanel implements ActionListener, KeyListe
         }
 
     }
-
+    //method that handles drawing the instructions on the screen
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(Sprites.instructions, 50, 10,700,500, null);
