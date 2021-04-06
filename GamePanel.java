@@ -235,31 +235,38 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             outofbounds = false;
             repaint();
         }
+        //check if the laser button is pressed
         if(e.getSource() == lbutton && canShoot){
+            //select the laser 
             lselected = true;
+            //reset the turret angle to 0
             if(player1turn) player1.setAngle(0);
             else player2.setAngle(0);
             repaint();
         }
+        //reset the turret angle
         if(lselected){
             if(player1turn) player1.setAngle(0);
             else player2.setAngle(0);
         }
-
+        //check if the missile button is pressed
         if(e.getSource() == mbutton && canShoot){
+            //select the missile, unselect the laser
             mselected = true;
             lselected = false;
         }
-
-
+        //check if the bomb button is pressed
         if(e.getSource() == bbutton && canShoot){
+            //select the bomb, unselect the laser
             bselected = true;
             lselected = false;
         }
 
+        //runs each time the timer ticks
         if(e.getSource()==timer) {
-            //make each ball move towards the mouse when it is clicked
             try {
+                //check if the projectiles are supposed to be shot
+                //if they are, shoot the projectile
                 if (laser.shootLaser) {
                     laser.shoot();
                     repaint();
@@ -284,7 +291,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     public void keyTyped(KeyEvent e) {
 
     }
-
+    //method that runs each time a key is pressed
     public void keyPressed(KeyEvent e) {
         if(player1turn) {
             player2.setFuel(10);
