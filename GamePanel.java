@@ -293,82 +293,110 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     }
     //method that runs each time a key is pressed
     public void keyPressed(KeyEvent e) {
+        //check if its the first players turn
         if(player1turn) {
+            //reset the fuel
             player2.setFuel(10);
+            //tank movement buttons
             if(e.getKeyCode()== e.VK_A) {
                 if(player1.getFuel() > 0) player1.moveFlatLeft();
             }
             if(e.getKeyCode()== e.VK_D) {
                 if(player1.getFuel() > 0) player1.moveFlatRight();
             }
+            //turret movement buttons
             if(e.getKeyCode()== e.VK_W) {
                 if(!lselected) player1.moveAngleUp();
             }
             if(e.getKeyCode()== e.VK_S) {
                 if(!lselected) player1.moveAngleDown();
             }
-      
+            //shooting button
             if(e.getKeyCode() == e.VK_E){
+                //check if the laser is selected
                 if(lselected && canShoot){
+                    //create a new laser
                     laser = new Laser(player1.getX(), player1.getY(), player1turn);
+                    //update variables
                     laser.shootLaser = true;
                     canShoot = false;
                 }
                 else
+                //check if the missile is selected
                 if(mselected){
+                    //create a new missile
                     missile = new Missile(player1.getX(), player1.getY(), player1turn, player1.getAngle());
+                    //update time variable
                     if(!missile.shootMissile) {
                         startTime = System.currentTimeMillis();
                     }
+                    //update variables
                     missile.shootMissile = true;
                     canShoot = false;
                 }
-
+                //check if bomb is selected
                 else if(bselected){
+                    //create a new bomb
                     bomb = new Bomb(player1.getX(), player1.getY(), player1turn, player1.getAngle());
+                    //update time variable
                     if(!bomb.shootBomb){
                         startTime = System.currentTimeMillis();
                     }
+                    //update variables
                     bomb.shootBomb = true;
                     canShoot = false;
                 }
             }
         }
+        //second players turn 
         else {
+            //update player1 fuel value
             player1.setFuel(10);
+            //tank movement buttons
             if(e.getKeyCode()== e.VK_J) {
                 if(player2.getFuel() > 0) player2.moveFlatLeft();
             }
             if(e.getKeyCode()== e.VK_L) {
                 if(player2.getFuel() > 0) player2.moveFlatRight();
             }
+            //turret movement buttons
             if(e.getKeyCode()== e.VK_I) {
                 if(!lselected) player2.moveAngleUp();
             }
             if(e.getKeyCode()== e.VK_K) {
                 if(!lselected) player2.moveAngleDown();
             }
+            //button to shoot
             if(e.getKeyCode() == e.VK_O){
+                //check if laser is selected
                 if(lselected && canShoot){
+                    //create a new laser
                     laser = new Laser(player2.getX(), player2.getY(), player1turn);
+                    //update variables
                     laser.shootLaser = true;
                     canShoot = false;
                 }
-                else
-                if(mselected){
+                //check if missile is selected
+                else if(mselected){
+                    //create a new missile
                     missile = new Missile(player2.getX(), player2.getY(), player1turn, player2.getAngle());
+                    //update the time variable
                     if(!missile.shootMissile) {
                         startTime = System.currentTimeMillis();
                     }
+                    //update variables
                     missile.shootMissile = true;
                     canShoot = false;
                 }
-
+                //check if bomb is selected
                 else if(bselected){
+                    //create a new bomb
                     bomb = new Bomb(player2.getX(), player2.getY(), player1turn, player2.getAngle());
+                    //update the time variable
                     if(!bomb.shootBomb){
                         startTime = System.currentTimeMillis();
                     }
+                    //update variables
                     bomb.shootBomb = true;
                     canShoot = false;
                 }
