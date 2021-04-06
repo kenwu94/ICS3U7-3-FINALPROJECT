@@ -155,46 +155,57 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         player2.drawHp(g, 740, false);
         player2.drawFuel(g, 840, false);
 
-        
+        //check if the laser being shot
         if(laser.shootLaser) {
+            //draw the laser
             laser.draw(g);
             if(player1turn) {
+                //detect player 2 tank collision with the laser
                 if(laser.getY() < player2.getY() + 64 && laser.getY() > player2.getY() && laser.getX() < player2.getX() + 64 && laser.getX() > player2.getX() && canHit) {
                     laser.hitTarget(player2, player1);
                     canHit = false;
                 }
             }
             else{
+                //detect player 1 tank collision with the laser
                 if(laser.getY() < player1.getY() + 64 && laser.getY() > player1.getY() && laser.getX() < player1.getX() + 64 && laser.getX() > player1.getX() && canHit) {
                     laser.hitTarget(player1, player2);
                     canHit = false;
                 }
             }
         }
+        //check if the missile is being shot
         if(missile.shootMissile){
+            //draw the laser
             missile.myDraw(g);
             if(player1turn){
+                //detect player 2 tank collision with the missile
                 if(missile.getY() < player2.getY() + 64 && missile.getY() > player2.getY() && missile.getX() < player2.getX() + 64 && missile.getX() > player2.getX() && canHit){
                     missile.hitTarget(player2, player1);
                     canHit = false;
                 }
             }
             else{
+                //detect player 1 tank collision with the missile
                 if(missile.getY() < player1.getY() + 64 && missile.getY() > player1.getY() && missile.getX() < player1.getX() + 64 && missile.getX() > player1.getX() && canHit) {
                     missile.hitTarget(player1, player2);
                     canHit = false;
                 }
             }
         }
+        //check if the bomb is being shot
         if(bomb.shootBomb){
+            //draw the bomb
             bomb.myDraw(g);
             if(player1turn){
+                //detect player 2 tank collision with bomb
                 if(bomb.getY() < player2.getY() + 64 && bomb.getY() > player2.getY() && bomb.getX() < player2.getX() + 64 && bomb.getX() > player2.getX() && canHit){
                     bomb.hitTarget(player2, player1);
                     canHit = false;
                 }
             }
             else{
+                //detect player 1 tank collision with bomb
                 if(bomb.getY() < player1.getY() + 64 && bomb.getY() > player1.getY() && bomb.getX() < player1.getX() + 64 && bomb.getX() > player1.getX() && canHit) {
                     bomb.hitTarget(player1, player2);
                     canHit = false;
@@ -207,13 +218,18 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
     //method that handles button presses
     public void actionPerformed(ActionEvent e) {
+        //check if the back button is pressed
         if(e.getSource() == back){
+            //show the menu banel
             MyFrame.lay.show(MyFrame.cont, "Menu Panel");
         }
+        //check if the skip button
         if(e.getSource() == skipTurn){
+            //switch player turn
+            player1turn = !player1turn
+            //reset variables
             player2.setFuel(10);
             player1.setFuel(10);
-            player1turn = !player1turn;
             canShoot = true;
             canHit = true;
             outofbounds = false;
