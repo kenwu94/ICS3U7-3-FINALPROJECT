@@ -56,6 +56,7 @@ public class ControlPanel extends JPanel implements ActionListener, KeyListener 
 
     //method that handles actions once buttons are clicked
     public void actionPerformed(ActionEvent e) {
+        //move through panels depending which button is clicked
         if(e.getSource() == back){
             MyFrame.lay.show(MyFrame.cont, "Menu Panel");
         }
