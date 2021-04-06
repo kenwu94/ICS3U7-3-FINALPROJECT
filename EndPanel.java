@@ -1,4 +1,11 @@
+/*
+Authors: Eric Y, Ken W
+Date: April 6 2021
+ICS 3U7 Ms S
+Class description: Class for the panel that displays the winner of the game
+*/
 
+//imports
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,15 +16,18 @@ import java.awt.image.BufferedImage;
 
 
 public class EndPanel extends JPanel implements ActionListener, KeyListener {
+    //variables
     private Timer timer;
     private JButton back, again;
     private JLabel title;
     String winner;
 
+    //constructor
     public EndPanel(String winner) {
 
+        //initialize variables, set up panel
         this.winner = winner;
-
+       
         setBackground(Color.white);
 
         setFocusable(true);
@@ -26,7 +36,7 @@ public class EndPanel extends JPanel implements ActionListener, KeyListener {
         timer = new Timer(5, this);
         timer.start();
         
-
+        //set up buttons
         back = new JButton();
         back.setBounds(710, 255, 140, 30);
         back.setText("BACK TO MENU");
@@ -44,13 +54,15 @@ public class EndPanel extends JPanel implements ActionListener, KeyListener {
 
         this.add(back);
         this.add(again);
-
+        
+        //make a new tankSelect panel
         TankSelect newTs = new TankSelect();
-
         MyFrame.cont.add(newTs, "New Tank Selection");
     }
-
+    
+    //method that handles button presses
     public void actionPerformed(ActionEvent e) {
+        //move through panels in CardLayout
         if (e.getSource() == back) {
             MyFrame.lay.show(MyFrame.cont, "Menu Panel");
         }
@@ -61,6 +73,7 @@ public class EndPanel extends JPanel implements ActionListener, KeyListener {
 
     }
 
+    //method that handles displaying the winner of the game
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         if(winner.equals("Player 1")) {
