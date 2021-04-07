@@ -11,7 +11,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
-
+//constructor
 public class Tank {
     //variables
     int hp, speed, power, x, y;
