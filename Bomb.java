@@ -64,7 +64,7 @@ public class Bomb {
         }
     }
 
-    //method that calculates the movement of the bomb for tank 1
+    //method that calculates the movement of the bomb for tank 2
     public void shootProjectile(Tank2 tank){
         //physics equations
         double radians = angle*Math.PI/180;
