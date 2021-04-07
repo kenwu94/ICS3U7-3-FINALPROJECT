@@ -52,6 +52,7 @@ public class Laser extends JComponent {
             GamePanel.lselected = false;
             GamePanel.outofbounds = true;
             GamePanel.canHit = false;
+            GamePanel.skippable = true;
         }
     }
     
