@@ -226,7 +226,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         //check if the skip button
         if(e.getSource() == skipTurn){
             //switch player turn
-            player1turn = !player1turn
+            player1turn = !player1turn;
             //reset variables
             player2.setFuel(10);
             player1.setFuel(10);
