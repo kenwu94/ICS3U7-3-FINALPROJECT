@@ -53,7 +53,7 @@ public class Missile {
 
     }
     
-    //method that calculates the movement of the missile
+    //method that calculates the movement of the missile for tank 1
     public void shootProjectile(Tank tank){
         //physics equations
         double radians = angle*Math.PI/180;
@@ -72,7 +72,7 @@ public class Missile {
         }
     }
     
-    //method that calculates movement of the missile
+    //method that calculates movement of the missile for tank 2
     public void shootProjectile(Tank2 tank){
         //physics equations
         double radians = angle*Math.PI/180;
