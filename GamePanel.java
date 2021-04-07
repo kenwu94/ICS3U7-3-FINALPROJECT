@@ -31,6 +31,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     public static boolean canHit;
     public static boolean outofbounds;
     private int drawn = 0;
+    public static boolean skippable;
     
     
     //constructor
@@ -45,6 +46,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         canShoot = true;
         canHit = true;
         outofbounds = false;
+        skippable = true;
 
         timer = new Timer(5, this);
         timer.start();
@@ -224,7 +226,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             MyFrame.lay.show(MyFrame.cont, "Menu Panel");
         }
         //check if the skip button
-        if(e.getSource() == skipTurn){
+        if(e.getSource() == skipTurn && skippable){
             //switch player turn
             player1turn = !player1turn;
             //reset variables
@@ -313,6 +315,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             }
             //shooting button
             if(e.getKeyCode() == e.VK_E){
+                //makes sure you can skip when the projectile is in the air
+                if(canShoot) skippable = false;
                 //check if the laser is selected
                 if(lselected && canShoot){
                     //create a new laser
@@ -368,6 +372,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             }
             //button to shoot
             if(e.getKeyCode() == e.VK_O){
+                //makes sure you can skip while the projectile is in the air
+                if(canShoot) skippable = false;
                 //check if laser is selected
                 if(lselected && canShoot){
                     //create a new laser
