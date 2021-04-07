@@ -61,6 +61,7 @@ public class Bomb {
             GamePanel.bselected = false;
             GamePanel.outofbounds = true;
             GamePanel.canHit = false;
+            GamePanel.skippable = true;
         }
     }
 
@@ -80,6 +81,7 @@ public class Bomb {
             GamePanel.bselected = false;
             GamePanel.outofbounds = true;
             GamePanel.canHit = false;
+            GamePanel.skippable = true;
         }
     }
 
