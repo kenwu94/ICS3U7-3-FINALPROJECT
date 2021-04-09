@@ -18,7 +18,7 @@ public class Tank2 extends Tank{
    public Tank2(int hp, int speed, int power, int x, int y, boolean isRight){
 		//call superclass
      	super(hp, speed, power, x, y,isRight);
-	 		  
+	 	//initialize variables	  
   		this.angle = 0;
         fuel = 10;
     }
@@ -26,16 +26,16 @@ public class Tank2 extends Tank{
    	//method that draws the tank
    	public void myDraw(Graphics g){
 		//get the proper turret image index
-       	 int index = (int) angle;
+       	int index = (int) angle;
         index = (index + 10)/10;
 		//draw the tank
         g.drawImage(tankImage, turretX, turretY, null);
         g.drawImage(Sprites.tank2[index],x+20,y+19,null);
         //check if the hp is 0
-       	 if(hp <= 0){
+       	if(hp <= 0){
 		//initialize a new End Panel and display it
-            EndPanel end = new EndPanel("Player 1");
-            MyFrame.cont.add(end, "End Panel");
+           	EndPanel end = new EndPanel("Player 1");
+         	MyFrame.cont.add(end, "End Panel");
             MyFrame.lay.show(MyFrame.cont, "End Panel");
         }
 		//check if the turn ended
@@ -65,12 +65,12 @@ public class Tank2 extends Tank{
     			tankImage = Sprites.tank2[10];
     			turretY = y+10;
         		turretX = x+15;
-    			}
-    		}else{
-				//get the normal tank image
-    			tankImage = Sprites.tank2[0];
-    			turretY = y;
-    			turretX = x+10;
-    		}
- 		}
+			}
+    	}else{
+			//get the normal tank image
+    		tankImage = Sprites.tank2[0];
+    		turretY = y;
+    		turretX = x+10;
+    	}
+ 	}
 }
